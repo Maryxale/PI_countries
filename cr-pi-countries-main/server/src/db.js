@@ -30,6 +30,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Country, Activity } = sequelize.models;
 
+Country.belongsToMany(Activity, {through: 'country_activity'});
+
+Activity.belongsToMany(Country, {through: 'country_activity'});
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

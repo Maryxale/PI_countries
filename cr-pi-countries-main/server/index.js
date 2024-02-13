@@ -2,6 +2,16 @@ const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
 const PORT = 3001;
+const URL = 'http://localhost:5000/countries/name';
+
+const almacenarDatos = async (req, res) =>{
+  try{
+    const { data } = await axios(URL)
+  }catch(error){
+
+  }
+
+}
 
 conn.sync({ force: true }).then(() => {
 server.listen(PORT, () => {
