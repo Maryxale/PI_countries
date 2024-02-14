@@ -1,16 +1,16 @@
-const { Country } = require('../db');
+const { Sequelize,Op } = require('sequelize');
+const { Country, Activity } = require('../db');
 
 
 
-//Ruta para 
+
+//Ruta para traer los paises por nombre
 const getCountriesName = async (req, res) => {
     const { name } = req.query;
     try{
         const countries = await Country.findAll({
             where: {
-            name: {
-                [Sequelize.Op.iLike]: `%${name}%`,
-            },
+                name: {[Sequelize.Op.iLike]: `%${name}`}
             },
         });
 

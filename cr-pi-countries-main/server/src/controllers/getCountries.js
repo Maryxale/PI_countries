@@ -1,16 +1,16 @@
-const axios = require('axios');
+const {Country, Activity } = require('../db');
 
-const {Country, Activity } = require('../db')
+
 
 //get para traer todos los paises
-const getCountries = async (req, res) => {
+module.exports = async function getCountries(req, res){
+   
     try{
-        const countries = await CountQueuingStrategy.findAll();
+        const allCountries = await Country.findAll({include: [Activity] });
 
-        return res.status(200).json(countries);
+        res.status(200).json(allCountries);
     }catch(error){
-        return res.status(500).json({message:error.message})
+        res.status(500).json({message:error.message})
     }
 }
 
-module.export = getCountries;
