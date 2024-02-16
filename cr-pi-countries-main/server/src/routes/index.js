@@ -10,10 +10,10 @@ const postActivities = require('../controllers/postActivities');
 //todas las rutas
 router.get('/:id', getCountriesId);
 router.get('/', getCountries);
-
 router.get('/name', getCountriesName);
-router.get('/', getActivities);
+router.get('/activities', getActivities);
 router.post('/activities', postActivities);
+
 
 
 module.exports = router;

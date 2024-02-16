@@ -12,9 +12,6 @@ const postActivities = async (req, res) => {
       const countryInstances = await Promise.all(
         countries.map(countryName => Country.findOrCreate({ where: { name: countryName } }))
       );
-  
-      // Relacionar la actividad con los países
-     // await newActivity.setCountries(countryInstances.map(([country]) => country));
 
        // Relacionar la actividad con los países
       await newActivity.addCountries(countryInstances.map(([country]) => country));
