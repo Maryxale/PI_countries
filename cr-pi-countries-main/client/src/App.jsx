@@ -18,6 +18,12 @@ function App() {
    <div>
     <Routes>
       <Route path='/' exact Component={LandingPage}/>
+
+      <Route path='/home' element={Home}/>
+
+      <Route path='/detail/:id' element={Detail}/>
+
+      <Route path='/' element={Detail}/>
     </Routes>
    </div>
   )
