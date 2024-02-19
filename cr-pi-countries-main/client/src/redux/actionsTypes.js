@@ -1,7 +1,12 @@
-export const GET_COUNTRIES = 'SET_COUNTRIES';
-export const GET_COUNTRY_DETAIL = 'SET_COUNTRY_DETAIL';
-export const BY_NAME = 'BY_NAME';
-export const BY_ORDER = 'BY_ORDER';
-export const BY_ACTIVITY = 'BY_ACTIVITY';
-export const GET_TOUR_ACTIVITY = 'ADD_TOUR_ACTIVITY';
+export const FILTER_AND_ORDER = 'FILTER_AND_ORDER';
+export const GET_COUNTRY= 'GET_COUNTRY';
+export const SEARCH_NAME = 'SEARCH_NAME';
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
+export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const LOADING = 'LOADING';
+export const FILTER_CONTINENT = 'FILTER CONTINENT';
+export const COUNTRY_DETAIL = 'COUNTRY_DETAIL'
+export const ORDEN_POBLACION_ASC = 'ORDEN_POBLACION_ASC';
+export const ORDEN_POBLACION_DESC = 'ORDEN_POBLACION_DESC';
+
+
