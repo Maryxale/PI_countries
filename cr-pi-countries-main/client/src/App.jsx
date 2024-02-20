@@ -2,62 +2,63 @@
 import { useState, useEffect}  from 'react'
 
 import './App.css'
- //configuracion con react-router-dom}
- import axios from 'axios';
- import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
- import Cards from './components/cards/Cards';
- import LandingPage from './components/landingPage/LandingPage';
- import Home from './components/home/Home';
- import Detail from './components/detail/Detail';
+import Home from './components/home/Home';
+import LandingPage from './components/landingPage/LandingPage';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import Detail from './components/detail/Detail';
+import Cards from './components/cards/Cards';
+import axios from 'axios';
 
 
 function App() {
- const {pathname} = useLocation();
- const [countries, getCountries] = useState([])
- const navigate = useNavigate();
+  const location = useLocation();
+//  const {pathname} = useLocation();
+//  const [countries, getCountries] = useState([])
+//  const navigate = useNavigate();
 
-  const URL = 'http://localhost:3001/countries'
+//   const URL = 'http://localhost:3001/countries'
 
-  const onSearch = async (name) => {
-    try{
-      if(!name) return alert('Ingrese el nombre de un Pais');
+//   const onSearch = async (name) => {
+//     try{
+//       if(!name) return alert('Ingrese el nombre de un Pais');
 
-      if(countries.find((char) => char.name === name)){
-        return alert(`Ya existe el personaje ${name} `); 
-      }
-      const response = await axios.get(`${URL}${id}`);
-      const { data } = response;
+//       if(countries.find((char) => char.name === name)){
+//         return alert(`Ya existe el personaje ${name} `); 
+//       }
+//       const response = await axios.get(`${URL}${id}`);
+//       const { data } = response;
 
-      if(data.id){
-        getCountries([data,...countries]);
-      }else{
-        alert('No hay pais con ese ID');
-      }
-    }catch(err){
-      alert(err.message);
-    }
-  };
+//       if(data.id){
+//         getCountries([data,...countries]);
+//       }else{
+//         alert('No hay pais con ese ID');
+//       }
+//     }catch(err){
+//       alert(err.message);
+//     }
+//   };
 
-  const onClose = (name) => {
-    getCountries(countries.filter(char => char.name !== name))
-  };
+//   const onClose = (name) => {
+//     getCountries(countries.filter(char => char.name !== name))
+//   };
 
   
+//{ location.pathname !== '/' && location.pathname !== '/home' ? <Nav/>: null }
+//<Route path='/form' element={<Form/>}/>
 
   return (
-   <div>
-     {pathname !== '/' && <Home onSearch={onSearch}/> }
-    <Routes>
-      <Route path='/' exact Component={LandingPage}/>
-
-      <Route path='/home' element={<Cards countries={countries} onClose={onClose} /> } />
-
-      <Route path='/detail/:id' element={Detail}/>
-
-      <Route path='/' element={Detail}/>
-    </Routes>
-   </div>
+  <div className="App">
+      <div className='dark'>
+      { location.pathname !== '/' && location.pathname !== '/home' ? <Nav/>: null }
+        <Routes>
+          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/detail/:id' element={<Detail/>}/>
+          
+        </Routes>
+      </div> 
+  </div>
   )
 }
 
-export default App
+export default App;

@@ -1,13 +1,13 @@
 import axios from "axios";
-import { FILTER_AND_ORDER,GET_COUNTRY, SEARCH_NAME, ADD_ACTIVITY, GET_ACTIVITY, LOADING, FILTER_CONTINENT, COUNTRY_DETAIL, ORDEN_POBLACION_ASC, ORDEN_POBLACION_DESC } from "./actionsTypes";
+import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, FILTER_COUNTRY, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT } from "./actionsTypes";
 
 
-export const filterAndOrder = (payload) => {
-    return {
-        type: FILTER_AND_ORDER,
-        payload
-    }
-}
+// export const filterAndOrder = (payload) => {
+//     return {
+//         type: FILTER_AND_ORDER,
+//         payload
+//     }
+// }
 
 export const getCountries = () => {
     const endpoint = 'http://localhost:3001/countries';  

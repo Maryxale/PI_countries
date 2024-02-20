@@ -1,4 +1,4 @@
-import {  FILTER_AND_ORDER,GET_COUNTRY, SEARCH_NAME, ADD_ACTIVITY, GET_ACTIVITY, LOADING, FILTER_CONTINENT, COUNTRY_DETAIL, ORDEN_POBLACION_ASC, ORDEN_POBLACION_DESC } from "./actionsTypes";
+import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, FILTER_COUNTRY, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT } from "./actionsTypes";
 //estado inicial
 const initialState = {
     error: "",
@@ -14,8 +14,8 @@ const initialState = {
 
 function reducer(state = initialState, {type, payload} ){
     switch(type){
-        case FILTER_AND_ORDER:
-            return{...state, filterAndorder: payload}
+        //case FILTER_AND_ORDER:
+           // return{...state, filterAndorder: payload}
         case GET_COUNTRY:
             return {...state, countries: payload, countriesBackup: payload,details: payload, searchName: payload};
 
@@ -50,36 +50,36 @@ function reducer(state = initialState, {type, payload} ){
                     countries: state.countries.filter(e => e.continent === action.payload)
                 }
             }
-            case ORDEN_POBLACION_ASC:{
-                return {
-                    ...state,
-                    loading: true,
-                    countries: state.countries.sort((a, b) => {
-                        if (a.name < b.name) {
-                            return -1;
-                        }
-                        if (b.name < a.name) {
-                            return 1;
-                        }
-                        return 0;
-                    })
-                }
-            }
-            case ORDEN_POBLACION_DESC:{
-                return {
-                    ...state,
-                    loading: true,
-                    countries: state.countries.sort((a, b) => {
-                        if (a.name > b.name) {
-                            return -1;
-                        }
-                        if (b.name > a.name) {
-                            return 1;
-                        }
-                        return 0;
-                    })
-                }
-            }
+            // case ORDEN_POBLACION_ASC:{
+            //     return {
+            //         ...state,
+            //         loading: true,
+            //         countries: state.countries.sort((a, b) => {
+            //             if (a.name < b.name) {
+            //                 return -1;
+            //             }
+            //             if (b.name < a.name) {
+            //                 return 1;
+            //             }
+            //             return 0;
+            //         })
+            //     }
+            // }
+            // case ORDEN_POBLACION_DESC:{
+            //     return {
+            //         ...state,
+            //         loading: true,
+            //         countries: state.countries.sort((a, b) => {
+            //             if (a.name > b.name) {
+            //                 return -1;
+            //             }
+            //             if (b.name > a.name) {
+            //                 return 1;
+            //             }
+            //             return 0;
+            //         })
+            //     }
+            // }
         
        
         case LOADING:

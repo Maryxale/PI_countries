@@ -8,6 +8,3 @@ export const ORDER_NAME = 'ORDER_NAME';
 export const ORDER_POPULATION = 'ORDER_POPULATION';
 export const LOADING = 'LOADING';
 export const FILTER_CONTINENT = 'FILTER CONTINENT';
-
-
-

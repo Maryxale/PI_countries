@@ -1,20 +1,39 @@
-import React from "react";
-import { Link } from 'react-router-dom';
-import mapa from '../../assets/mapa-mundo.jpg';
 import style from './LandingPage.module.css';
+import { Link } from 'react-router-dom';
+//import mapa from '../../assets/mapa-mundo.jpg';
 
-
-function LandingPage (){
-return (
+// function LandingPage (){
+// return (
    
-    <div className={style.container} style={{ backgroundImage: `url(${mapa})` }}> 
+//     <div className={style.landing}> 
+//         <div className={style.dark}>
+//             <h1>Bienvenidos a la app de countries</h1>
+//         <Link to='/home'>
+//         <button>Home</button>
+//         </Link>
+//         </div>
+//     </div>
     
-        <Link to='/home'>
-        <button>Home</button>
-        </Link>
-    </div>
-    
-)
+// )
+//}
+const LandingPage = () => {
+    return (
+        <div className={style.landing}>
+            <div className={style.dark}>
+                <div className={style.text}>
+                    <div className={style.textsmall}>
+                        <h5>Henry PI</h5>
+                    </div>
+                    <div className={style.textBig}>
+                        <h1>Countries App Proyect</h1>
+                    </div>
+                    <div>
+                        <Link to='/home'> <button>Home</button> </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 
