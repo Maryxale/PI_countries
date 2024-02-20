@@ -21,11 +21,8 @@ const LandingPage = () => {
         <div className={style.landing}>
             <div className={style.dark}>
                 <div className={style.text}>
-                    <div className={style.textsmall}>
-                        <h5>Henry PI</h5>
-                    </div>
-                    <div className={style.textBig}>
-                        <h1>Countries App Proyect</h1>
+                    <div className={style.textBig}> 
+                        <h1>Bienvenidos a la app Countries</h1>
                     </div>
                     <div>
                         <Link to='/home'> <button>Home</button> </Link>
@@ -35,6 +32,7 @@ const LandingPage = () => {
         </div>
     )
 }
+
 
 
 

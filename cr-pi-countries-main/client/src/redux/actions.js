@@ -1,15 +1,10 @@
 import axios from "axios";
-import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, FILTER_COUNTRY, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT } from "./actionsTypes";
+import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
 
 
-// export const filterAndOrder = (payload) => {
-//     return {
-//         type: FILTER_AND_ORDER,
-//         payload
-//     }
-// }
 
-export const getCountries = () => {
+
+export const getCountry = () => {
     const endpoint = 'http://localhost:3001/countries';  
     return async (dispatch) => {
         try{
@@ -24,16 +19,12 @@ export const getCountries = () => {
     }
 }
 
-export const getDetails = (id) => {
+export const countryDetail = (id) => {
     const endpoint = `http://localhost:3001/countries/${id}`; 
     return async (dispatch)=> {
         try{
-            dispatch({
-                type: "LOADING"
-                
-            })
             const { data } = await axios.get(endpoint);
-            dispatch({
+            return dispatch({
                 type: COUNTRY_DETAIL,
                 payload: data,
             });
@@ -43,29 +34,23 @@ export const getDetails = (id) => {
     }
 }
 
-export const addActivity = (name,difficulty, duration, season, id) => {
-    const endpoint = 'http://localhost:3001/countries/activities';
-    return async () => {
+export const addActivity = (payload) => {
+    const endpoint = 'http://localhost:3001/activities';
+    return async (dispatch) => {
         try{
-            await axios.post(endpoint, {name,difficulty, duration, season, id})
+            const { data } = await axios.post(endpoint, payload);
             alert('Actividad agregada')
             return dispatch({
                 type: ADD_ACTIVITY,
-                payload: {
-                    name,
-                    difficulty, 
-                    duration, 
-                    season, 
-                    id
-                }
+                payload: data
             })
         }catch(error){
             alert(error.messaje);
         }
     }
 }
-export const searchName = (name) => {
-    const endpoint = `http://localhost:3001/countries?name=${name}`;
+export const searchName = (payload) => {
+    const endpoint = `http://localhost:3001/countries?name=${payload}`;
     return async (dispatch) => {
         try{
             const { data } = await axios.get(endpoint);
@@ -80,33 +65,45 @@ export const searchName = (name) => {
     } 
 }
 
-export const filterContinent = () => {
+//filtrar por continente o activity
+
+export const filterContinentActivity = (payload) => {
     return{
-        type: FILTER_CONTINENT,
-        payload: continent
+        type: FILTER_CONTINENT_ACTIVITY,
+        payload
     }
 }
 
-export const getActivity = () => {
+export const getActivity = (payload) => {
+    const endpoint = 'http://localhost:3001/activities'
+    return async (dispatch) => {
+        try{
+            const { data } = await axios.get(endpoint,payload);
+            return dispatch({
+                type: GET_ACTIVITY,
+                payload: data
+            })
+        }catch(error){
+            alert(error.messaje);
+        }
+        }
+    }
+    
+    //ordenamientos asc y desc
+
+export const orderName = (payload) => {
     return {
-        type: GET_ACTIVITY,
-        payload: activities
+        type: ORDER_NAME,
+        payload
     }
 }
 
-export const ordenAlfabetico = () => {
+export const orderPopulation = (payload) => {
     return {
-        type: tipo === 'asc' ? ORDEN_POBLACION_ASC : ORDEN_POBLACION_DESC,
+        type:ORDER_POPULATION,
+        payload
     }
 }
-
-export const cantidadPoblacion = () => {
-    return {
-        type: tipo === 'asc' ? ORDEN_POBLACION_ASC : ORDEN_POBLACION_DESC,
-    }
-}
-
-
 
 export const loading = (payload) => {
     return{

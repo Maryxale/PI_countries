@@ -1,93 +1,84 @@
-import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, FILTER_COUNTRY, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT } from "./actionsTypes";
+import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
 //estado inicial
 const initialState = {
     error: "",
+    countriesAll: [],
     countries: [],
-    allactivities: [],
-    countriesBackup: [],
     activity: [],
     details: [],
     loading: false,
-    filterAndorder: false
+    
 
 }
 
 function reducer(state = initialState, {type, payload} ){
     switch(type){
-        //case FILTER_AND_ORDER:
-           // return{...state, filterAndorder: payload}
+        
         case GET_COUNTRY:
-            return {...state, countries: payload, countriesBackup: payload,details: payload, searchName: payload};
+            return {...state, countries: payload, countriesAll: payload};
 
         case COUNTRY_DETAIL:
             return {...state, details: payload, loading: false };
 
         case ADD_ACTIVITY:
-            state.countries = state.countriesBackup;
+            return {...state};
             
-            return {
-                ...state,
-                loading: false,
-                countries: state.countries.filter(el => el.activities.find(e => (e.name).toLowerCase() === (action.payload).toLowerCase()))
-            };
-
         case GET_ACTIVITY:
-            const activityFilter = state.allactivities.filter(element => element.activities === payload)
-            return {...state, 
-                activity:payload === 'All' ? state.countries : activityFilter}
+            return {...state, activity: payload};
 
         case SEARCH_NAME:
-            return {...state, countries: payload,  error: "", loading: false };
-        
-        case FILTER_CONTINENT:{
-            
-                //if(state.countries.length  === 0)state.countries = state.countriesBackup;
-                state.countries = state.countriesBackup;
-    
-                return {
-                    ...state,
-                    loading: false,
-                    countries: state.countries.filter(e => e.continent === action.payload)
-                }
+            //!ver si puedo quitar todos los paises
+            //metodo some() para comprobar si algun elemento cumple con lo que se requiere
+            let AllCountries = payload
+            let filterCountries = state.countries
+            if(state.countries !== state.countriesAll){
+                AllCountries = filterCountries.filter((country) => payload.some((count) => count.id === country.id ))
             }
-            // case ORDEN_POBLACION_ASC:{
-            //     return {
-            //         ...state,
-            //         loading: true,
-            //         countries: state.countries.sort((a, b) => {
-            //             if (a.name < b.name) {
-            //                 return -1;
-            //             }
-            //             if (b.name < a.name) {
-            //                 return 1;
-            //             }
-            //             return 0;
-            //         })
-            //     }
-            // }
-            // case ORDEN_POBLACION_DESC:{
-            //     return {
-            //         ...state,
-            //         loading: true,
-            //         countries: state.countries.sort((a, b) => {
-            //             if (a.name > b.name) {
-            //                 return -1;
-            //             }
-            //             if (b.name > a.name) {
-            //                 return 1;
-            //             }
-            //             return 0;
-            //         })
-            //     }
-            // }
+            return {...state, countries: AllCountries, error: "", loading: false };
+
+            //filtrado de continente y actividades
         
+        case FILTER_CONTINENT_ACTIVITY:
+            //primero traigo todos los paises
+            let CountriesFilter = [...state.countriesAll];
+                //filtro por continente
+            if(payload.continent !== 'All'){
+                CountriesFilter = CountriesFilter.filter(element => element.continent === payload.continent)
+            }
+
+            if(payload.Activity !== 'All'){
+                CountriesFilter = CountriesFilter.filter(element => element.Activities.find(activities => activities.name === payload.activities))
+            }
+            return{...state, countries: CountriesFilter};
+            //Ordenamientos
+        case ORDER_NAME:
+            
+            //metodo sort para ordenar
+            const orderedName = state.countries.sort((a,b) => {
+                if(payload === 'ascendente') return a.name - b.name
+                return b.name - a.name
+            })
+            return{
+                ...state,
+                countries: [...orderedName]
+            }
+            
+        case ORDER_POPULATION:
+            const orderedPopulation = state.countries.sort((a,b) => {
+                if(payload === 'ascendente') return parseInt(a.population, 10) - parseInt(b.population, 10)
+                return parseInt(b.population, 10) - parseInt(a.population, 10)
+            })
+            return{
+                ...state,
+                countries: [...orderedPopulation]
+            }
        
         case LOADING:
             return{
                 ...state,
                 loading: true
             }
-        default: return state;
+        default: return {...state};
     }
 
 

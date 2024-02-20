@@ -1,30 +1,41 @@
 import Card from "../card/Card";
+import React from "react";
 
 
-function Cards(props){
-   const { countries, onClose } = props
-   return(
-    <div>
-        {
-            countries.map(char => (
-                <Card
-                key={char.name}
-                id={char.id}
-                name={char.name}
-                flags={char.flags.svg}
-                continent={char.continent}
-                capital={char.capital?.[0]}
-                subregion={char.subregion}
-                area={char.area}
-                population={char.population}
-                onClose={onClose}
-                
-                />
+
+function Cards({countries}){
+    return (
+        <div>
+          {
+            countries?.map(c=>(
+              <Card
+              key={c.id}
+              id={c.id}
+              name={c.name}
+              flags={c.flags}
+              continent={c.continent}
+              
+              />
             ))
-        }
-    </div>
-   )
-
+          }
+        </div>
+      )
 }
+
+
+//  const Cards = ({id, name, flags, continent}) => {
+//     return(
+    
+//         <Card
+//          key={id}
+//         id={id}
+//         name={name}
+//         flags={flags}
+//         continent={continent}
+//          />
+    
+//      )
+//  }
+
 
 export default Cards;

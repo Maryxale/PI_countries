@@ -2,21 +2,27 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 
+//renderizo
 
-function Card ({id, name, flags, continent, capital, subregion, area, population }){
-    return(
-        <div>
-            <h2>{id}</h2>
-            <Link to={`/details/${countries.id}`}><h2>Ver Detalles</h2></Link>
-            <img src={flags} alt={`Bandera de ${name}`} />
-            <h2>{continent}</h2>
-            <h2>{capital}</h2>
-            <h2>{subregion}</h2>
-            <h2>{area}</h2>
-            <h2>{population}</h2>
-            
+
+function Card ({id, name, flags, continent}){
+    return (
+       <div>
+            <h3>{name}</h3>
+
+        <Link to={`/detail/${id}`}>
+           <img src={flags} alt="country" />
+        </Link>
+        
+        <h4>Continente: {continent}</h4>
         </div>
-    );
+    )
 }
+
+
+
+
+
+
 
 export default Card;
