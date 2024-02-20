@@ -1,26 +1,23 @@
-const { Country, Activity } = require('../db');
+const { Activity } = require('../db.js');
 
-//ruta para crear actividad turistica y relacionarla con paises
-const postActivities = async (req, res) => {
-    try {
-      const { id, name, difficulty, duration, season, countries } = req.body;
-  
-      // Crear la actividad turística en la base de datos
-      const newActivity = await Activity.create({ id, name, difficulty, duration, season });
-  
-      // Buscar países por nombre en la base de datos o crearlos si no existen
-      const countryInstances = await Promise.all(
-        countries.map(countryName => Country.findOrCreate({ where: { name: countryName } }))
-      );
+//Creo una nueva Actividad y la relaciono con el pais correspondiente
 
-       // Relacionar la actividad con los países
-      await newActivity.addCountries(countryInstances.map(([country]) => country));
-  
-      res.status(201).json({ success: true, message: 'Actividad turística creada exitosamente.' });
+const postActivities = async (name, difficulty, duration, season, countryId) => {
+    try {//'actividad' es la actividad encontrada o creada, 'created' es el valor booleano por si se creo(true) o no se creo(false) una nueva actividad
+        let [actividad, created] = await Activity.findOrCreate({
+            where: {
+                name, 
+                difficulty, 
+                duration, 
+                season,
+            }
+        })
+        //        console.log(created); //veo en consola si se creo o no una actividad nueva
+        await actividad.setCountries(countryId);//establezco la relacion con el pais correspondiente
+        return actividad; //devuelvo el objeto con mi actividad, relacionada con el pais correspondiente. 
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+        console.log('Error al crear la actividad', error);
     }
-}
+};
 
 module.exports = postActivities;

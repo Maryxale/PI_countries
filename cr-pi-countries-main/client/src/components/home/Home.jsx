@@ -13,7 +13,7 @@ function Home({onSearch}){
  useEffect(() => {
     const Data = async () => {
         try {
-          const response = await axios.get(URL);
+          // const response = await axios.get(URL);
           const countries = response.data; // Asumiendo que la respuesta contiene una lista de países
           onSearch(countries); // Actualiza el estado con los países obtenidos
         } catch (error) {

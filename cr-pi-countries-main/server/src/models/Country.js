@@ -7,8 +7,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
-     
+      primaryKey: true    
     },
     name: {
       type: DataTypes.STRING,
@@ -25,17 +24,20 @@ module.exports = (sequelize) => {
     capital: {
       type: DataTypes.STRING,
       allowNull: true,
+      collate: 'utf8_general_ci',
+      charset: 'utf8',
+
     },
     subregion: {
       type: DataTypes.STRING,
-      allowNull: true
+      
     },
     area: {
       type: DataTypes.STRING,
-      allowNull: true
+      
     },
     population: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     }
   }, { timestamps: false });

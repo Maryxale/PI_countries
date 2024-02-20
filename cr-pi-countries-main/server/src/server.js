@@ -1,7 +1,8 @@
 const express = require("express");
-const router = require("./routes");
 const morgan = require("morgan");
+const router = require("./routes/index");
 const cors = require("cors");
+
 const server = express();
 
 //middlewares
@@ -18,11 +19,14 @@ server.use((req, res, next) => {
     );
     next();
 });
+
+const corsOptions = {origin: '*',}
+
 server.use(morgan("dev"));
 server.use(express.json());
-server.use(cors());
+server.use(cors(corsOptions));
 
 
-server.use('/countries',router);
+server.use('/',router);
 
 module.exports = server;
