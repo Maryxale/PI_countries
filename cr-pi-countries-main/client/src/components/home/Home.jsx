@@ -49,16 +49,16 @@ const handleActivity = (evento) => {
 
 //ORDENAR
 const handleFilter = () => {
- // handleButtonClick()
+ 
   setpageCurrent(1);
   let filters = {
     continent: filterContinent,
     activity: filterActivity,
   };
   dispatch(filterContinentActivity(filters));
-  setOrder(""); // setea el select de ordenamiento, para que cada vez que hago un filtro, vuelva a la option Order by...
+  setOrder(""); // setea el select de ordenamiento
 };
-//
+
 const handleOrderBy = (evento) => {
   evento.preventDefault();
   const selectedValue = evento.target.value;
@@ -66,78 +66,87 @@ const handleOrderBy = (evento) => {
   dispatch(orderBy(selectedValue));
 };
  //paginado
- const pageFinal = Math.ceil(Countries?.length / PorPage) //dividimos el total de paises por la cantidad que vamos a colocar en cada pagina para obtener el total de paginas.
+ const pageFinal = Math.ceil(Countries?.length / PorPage) //dividimos el total de paises por la cantidad que vamos a colocar.
 
  const handlePageChange = (pageNumber) => {
    setpageCurrent(pageNumber);
- };//handler que maneja la pagina en la cual estamos. 
+ };//handler para pagina actual 
 
-    return(
-        <div>
-          <div>
-            <SearchBar handleFilter={handleFilter} onPageChange={handlePageChange}/>
-          </div>
-          <div className={style.home}>
+ return (
+
+  <div >
+
+    <div>
+      <SearchBar handleFilter={handleFilter} onPageChange={handlePageChange} />
+    </div>
+
+    <div className={style.home}>
       <div className={style.costado}>
-         {/* ------------------Filtros-------------------- */}
-         <div className={style.filterContainer}>
-            <h1 className={style.title}>Filtros</h1>
-            <div>
-               <h3 className={style.subtitle}>Filter Continent</h3>
-               <select className={style.select} onChange={handleContinent}>
-                  <option value='All'>All Continents</option>
-                  <option value='Africa'>Africa</option>
-                  <option value='Antarctica'>Antartica</option>
-                  <option value='Asia'>Asia</option>
-                  <option value='Europe'>Europe</option>
-                  <option value='North America'>North America</option>
-                  <option value='Oceania'>Oceania</option>
-                  <option value='South America'>South America</option>
-               </select>
-            </div>
-
-            <div>
-               <h3 className={style.subtitle}>Filter Activity</h3>
-               <select className={style.select} onChange={handleActivity}>
-                  <option value="All">All Activities</option>
-                     {allActivities && allActivities.map((activity) => {
-                     return (
-                  <option value={activity.name}>{activity.name}</option>
-                           )
-                  })}
-               </select>
-            </div>
-            <button className={style.reload} type="submit" onClick={handleFilter}>Aplicar</button>
-         </div>
-         
-         {/* ---------Ordenamiento por nombre y poblacion--------- */}
-         <div className={style.orderContainer}>
-            <h1 className={style.title}>Ordernar Por</h1>
-            <h3 className={style.subtitle}>Nombre/Poblacion</h3>
-            <select className={style.select} onChange={handleOrderBy} value={order}>
-               <option value="" disabled selected>Ordenar</option>
-               <option value='NombreAscendente'>Nombre A - Z</option>
-               <option value='NombreDescendente'>Nombre Z - A</option>
-               <option value='PoblacionAscendente'>Población Baja-Alta</option>
-               <option value='PoblacionDescendente'>Población Alta-Baja</option>
-            </select>
-         </div>
-      </div>
-   </div>
+        {/* ------------------Filtros-------------------- */}
+        <div className={style.filterContainer}>
+          <h1 className={style.title}>Filtros</h1>
           <div>
-            <Cards countries={currentElements}  />
+            <h3 className={style.subtitle}>Filtrar Continente</h3>
+            <select className={style.select} onChange={handleContinent}>
+              <option value='All'>Todos los Continentes</option>
+              <option value='Africa'>Africa</option>
+              <option value='Antarctica'>Antartica</option>
+              <option value='Asia'>Asia</option>
+              <option value='Europe'>Europe</option>
+              <option value='North America'>North America</option>
+              <option value='Oceania'>Oceania</option>
+              <option value='South America'>South America</option>
+            </select>
           </div>
-          <div className={style.pag}>
-            <Pagination
-               pageCurrent={pageCurrent}
-               pageFinal={pageFinal}
-               onChangePage={handlePageChange}
-            />
-         </div>
+
+
+          <div>
+            <h3 className={style.subtitle}>Filtrar Actividad</h3>
+            <select className={style.select} onChange={handleActivity}>
+              <option value="All">Actividades</option>
+              {allActivities && allActivities.map((activity) => {
+                return (
+                  <option value={activity.name}>{activity.name}</option>
+                )
+              })}
+            </select>
+          </div>
+
+          <button className={style.reload} type="submit" onClick={handleFilter}>Aplicar</button>
+          
         </div>
-        
-        
-    )
+
+        {/* ---------Ordenamiento por nombre y poblacion--------- */}
+
+        <div className={style.orderContainer}>
+          <h1 className={style.title}>Ordenar Por</h1>
+          <h3 className={style.subtitle}>Nombre/Poblacion</h3>
+          <select className={style.select} onChange={handleOrderBy} value={order}>
+            <option value="" disabled selected>Ordenar</option>
+            <option value='NombreAscendente'>Nombre A - Z</option>
+            <option value='NombreDescendente'>Nombre Z - A</option>
+            <option value='PoblacionAscendente'>Población Baja-Alta</option>
+            <option value='PoblacionDescendente'>Población Alta-Baja</option>
+          </select>
+        </div>
+
+       
+      </div>
+
+      <div className={style.container}>
+        <Cards countries={currentElements}/>
+        <div className={style.espacio}>  </div>
+        <div className={style.pag}>
+          <Pagination
+            pageCurrent={pageCurrent}
+            pageFinal={pageFinal}
+            onChangePage={handlePageChange}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+)
 }
 
 export default Home;

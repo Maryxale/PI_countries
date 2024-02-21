@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchName } from "../../redux/actions"; //action a utilizar
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import React from "react";
+import style from './SearchBar.module.css';
 
 
  
@@ -16,26 +17,25 @@ function SearchBar(props){
        const value = evento.target.value;
        setName(value);
     }
-  //probar sacando el hadleButton 
+
     function handleSubmit(evento){
-      handleButtonClick()
       evento.preventDefault();
       dispatch(searchName(name));
       setName('')
       props.onPageChange(1);
     }
-//y esta
-    const handleButtonClick = () => {
-      setIsPlaying(true);
-      //audioRef.current.play();
-    };
-
+//ver si agrego el reload
     return (
-       <div> 
+       <div className={style.barra}> 
           
-          <input type='search' onChange={(evento) => handleChange(evento) } placeholder="Buscar por nombre" value={name} /> 
+          <input className={style.search} type='search' onChange={(evento) => handleChange(evento) } placeholder="Buscar por nombre" value={name} /> 
 
-          <button type='submit' disabled={name === ''} onClick={(evento) => handleSubmit(evento) }>Buscar</button> 
+          <button className={style.buttonsearch} type='submit' disabled={name === ''} onClick={(evento) => handleSubmit(evento) }>Buscar</button> 
+
+          <button className={style.buttonsearchh} type='submit' onClick={(event) => props.handleFilter(event)}>Reset</button>
+
+          <NavLink className={style.select} to="/">Salir</NavLink>
+          <NavLink className={style.select} to="/form">Crear Actividad</NavLink>
         
        </div>
        

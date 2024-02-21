@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import LandingPage from './components/landingPage/LandingPage';
 import { Routes, Route, useLocation} from 'react-router-dom';
 import Detail from './components/detail/Detail';
+import Nav from './components/nav/Nav';
 
 
 

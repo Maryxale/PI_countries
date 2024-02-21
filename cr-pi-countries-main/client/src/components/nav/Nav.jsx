@@ -6,8 +6,8 @@ const Nav = () => {
     <div className={style.barra}>
         
         <NavLink className={style.countries} to="/home">Countries PI</NavLink>
-        <NavLink className={style.select} to="/">Exit</NavLink> 
-        <NavLink className={style.select} to="/form">Create Activity</NavLink>
+        <NavLink className={style.select} to="/">Salir</NavLink> 
+        <NavLink className={style.select} to="/form">Crear Actividad</NavLink>
         
     </div>
     )

@@ -1,4 +1,4 @@
-import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
+import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
 //estado inicial
 const initialState = {
     error: "",
@@ -27,6 +27,9 @@ function reducer(state = initialState, {type, payload} ){
         case GET_ACTIVITY:
             //return {...state, activity: payload};
             return {...state, activities: payload};
+        case DELETE_ACTIVITIES:
+                return { ...state};
+                
         case SEARCH_NAME:
             //!ver si puedo quitar todos los paises
             //metodo some() para comprobar si algun elemento cumple con lo que se requiere

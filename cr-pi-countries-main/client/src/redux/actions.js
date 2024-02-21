@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
+import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
 
 export const getCountry = () => {
     const endpoint = 'http://localhost:3001/countries';  
@@ -45,7 +45,21 @@ export const addActivity = (payload) => {
             alert(error.messaje);
         }
     }
+
 }
+
+export const deleteActivities = (payload) => {
+    const endpoint = `http://localhost:3001/activities?name=${payload}`
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.delete(endpoint);
+            return dispatch({ type: DELETE_ACTIVITIES, payload: data })
+        } catch (error) {
+            console.log('Error al borrar la actividad', error);
+        }
+    }
+}
+
 export const searchName = (payload) => {
     const endpoint = `http://localhost:3001/countries?name=${payload}`;
     return async (dispatch) => {

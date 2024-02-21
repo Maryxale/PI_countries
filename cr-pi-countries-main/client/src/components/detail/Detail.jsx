@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { countryDetail } from "../../redux/actions";
 import { useEffect } from "react";
+import styles from './Detail.module.css';
 
 function Detail(){
 
     const {id}= useParams();
-    const countries= useSelector(state => state.getcountryDetail)
+    const countries= useSelector(state => state.details)
     const dispatch= useDispatch();
-
+//traer la accion
     useEffect(() => {
         dispatch(countryDetail(id))
     }, [id])
@@ -25,7 +26,7 @@ function Detail(){
     
             <div>
               <div className={styles.containerDetails}>
-              <h1 className={styles.title}>Country Data</h1>
+              <h1 className={styles.title}>Datos del Pais</h1>
               <h3 className={styles.text}>Continent: {countries?.continent} </h3>
               <h3 className={styles.text}>Capital: {countries?.capital}</h3>
               <h3 className={styles.text}>Subregion: {countries?.subregion}</h3>
@@ -34,7 +35,7 @@ function Detail(){
               </div>
     
          <div className={styles.containerDetails}>
-          <h1 className={styles.title}>Tourist Activities</h1>
+          <h1 className={styles.title}>Actividades Turisticas</h1>
     
          <div className={styles.actividades}> 
           {
@@ -48,7 +49,7 @@ function Detail(){
                 <h5 className={styles.text}>Season: {activity.season}</h5>
               </div>
             )))
-          : (<p className={styles.divLoading}>No Tourist Activities added so far</p>)  
+          : (<p className={styles.divLoading}>Sin actividades recientes</p>)  
          }
          </div>
     
