@@ -1,12 +1,13 @@
-import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
+import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
 //estado inicial
 const initialState = {
     error: "",
     countriesAll: [],
     countries: [],
-    activity: [],
-    details: [],
+    //activity: [],
+    details: {},
     loading: false,
+    activities: [],
     
 
 }
@@ -24,8 +25,8 @@ function reducer(state = initialState, {type, payload} ){
             return {...state};
             
         case GET_ACTIVITY:
-            return {...state, activity: payload};
-
+            //return {...state, activity: payload};
+            return {...state, activities: payload};
         case SEARCH_NAME:
             //!ver si puedo quitar todos los paises
             //metodo some() para comprobar si algun elemento cumple con lo que se requiere
@@ -46,32 +47,19 @@ function reducer(state = initialState, {type, payload} ){
                 CountriesFilter = CountriesFilter.filter(element => element.continent === payload.continent)
             }
 
-            if(payload.Activity !== 'All'){
-                CountriesFilter = CountriesFilter.filter(element => element.Activities.find(activities => activities.name === payload.activities))
+            if(payload.activity !== 'All'){
+                CountriesFilter = CountriesFilter.filter(country => country.Activities.find(activity => activity.name === payload.activity))
             }
             return{...state, countries: CountriesFilter};
             //Ordenamientos
-        case ORDER_NAME:
+        case ORDER_BY:
+            const orderCountry = [...state.countries]
             
-            //metodo sort para ordenar
-            const orderedName = state.countries.sort((a,b) => {
-                if(payload === 'ascendente') return a.name - b.name
-                return b.name - a.name
-            })
-            return{
-                ...state,
-                countries: [...orderedName]
-            }
-            
-        case ORDER_POPULATION:
-            const orderedPopulation = state.countries.sort((a,b) => {
-                if(payload === 'ascendente') return parseInt(a.population, 10) - parseInt(b.population, 10)
-                return parseInt(b.population, 10) - parseInt(a.population, 10)
-            })
-            return{
-                ...state,
-                countries: [...orderedPopulation]
-            }
+            if(payload === "NombreAscendente")  return {...state,countries: orderCountry.sort((a, b) => a.name.localeCompare(b.name))}
+            if(payload === "NombreDescendente")  return {...state,countries: orderCountry.sort((a, b) => b.name.localeCompare(a.name))}
+            if(payload === "PoblacionAscendente")  return {...state,countries: orderCountry.sort((a, b) => parseInt(a.population, 10) - parseInt(b.population, 10))}
+            if(payload === "PoblacionDescendente")  return {...state,countries: orderCountry.sort((a, b) => parseInt(b.population, 10) - parseInt(a.population, 10))}
+            break;
        
         case LOADING:
             return{

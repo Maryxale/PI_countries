@@ -16,21 +16,27 @@ function SearchBar(props){
        const value = evento.target.value;
        setName(value);
     }
-  
+  //probar sacando el hadleButton 
     function handleSubmit(evento){
+      handleButtonClick()
       evento.preventDefault();
       dispatch(searchName(name));
       setName('')
       props.onPageChange(1);
     }
-    
+//y esta
+    const handleButtonClick = () => {
+      setIsPlaying(true);
+      //audioRef.current.play();
+    };
+
     return (
        <div> 
           
           <input type='search' onChange={(evento) => handleChange(evento) } placeholder="Buscar por nombre" value={name} /> 
 
-          <button  onClick={(evento) => handleSubmit(evento) }>Buscar</button> 
-
+          <button type='submit' disabled={name === ''} onClick={(evento) => handleSubmit(evento) }>Buscar</button> 
+        
        </div>
        
           

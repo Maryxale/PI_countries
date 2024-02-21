@@ -1,8 +1,5 @@
 import axios from "axios";
-import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_NAME, ORDER_POPULATION, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
-
-
-
+import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY } from "./actionsTypes";
 
 export const getCountry = () => {
     const endpoint = 'http://localhost:3001/countries';  
@@ -91,19 +88,14 @@ export const getActivity = (payload) => {
     
     //ordenamientos asc y desc
 
-export const orderName = (payload) => {
+export const orderBy = (payload) => {
     return {
-        type: ORDER_NAME,
+        type: ORDER_BY,
         payload
     }
 }
 
-export const orderPopulation = (payload) => {
-    return {
-        type:ORDER_POPULATION,
-        payload
-    }
-}
+
 
 export const loading = (payload) => {
     return{
