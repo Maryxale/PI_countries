@@ -56,11 +56,11 @@ const Form = () => {
         event.preventDefault(); //se evita que la página se recargue al enviar el formulario.
         const errorSave = validate(input); // se asigna el resultado de la funcion validate, pasandole input como parametro.
         const existName = theActivities.find(activity => activity.name.toLowerCase() === input.name.toLowerCase()) ? 1 : 0; //si hay alguna actividad con el mismo nombre que el valor ingresado en el campo input.name, existName se establece en 1, de lo contrario, se establece en 0.
-        if (existName === 1) alert("Activity name already exists");// si hay una actividad con el mismo nombre 
-        else if (Object.values(errorSave).length !== 0) alert("You must fullfill all the required conditions");//Si el objeto errorSave tiene algún valor (Object.values() convierte el objeto en un array), se muestra una alerta al usuario indicando que deben cumplirse todas las condiciones requeridas. ¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
+        if (existName === 1) alert("El nombre de la actividad ya existe");// si hay una actividad con el mismo nombre 
+        else if (Object.values(errorSave).length !== 0) alert("You must fullfill all the required conditions");// ¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
         else {
             dispatch(addActivity(input)) //se despacha la action pasandole como argumento "input", que es un objeto con todo lo necesario para crear una nueva actividad. 
-            alert('Activity Created!')//se muestra una alerta al usuario indicando que se ha creado la actividad con exito.
+            alert('Actividad Creada!')//se muestra una alerta al usuario indicando que se ha creado la actividad con exito.
             setInput({
                 name: '', 
                 difficulty: '', 
@@ -68,7 +68,7 @@ const Form = () => {
                 season: '',
                 countryId: []
             }) // borrar los datos ingresados en el formulario.
-            reload(); //recargar la lista de actividades después de crear una nueva actividad.
+            //reload(); //recargar la lista de actividades después de crear una nueva actividad.
         }
     }
 
@@ -83,13 +83,11 @@ const Form = () => {
     const handleSubmitDelete = (event) => {
         
         event.preventDefault();
-        if (delAct.length <= 0) alert("You must select an activity to delete"); //¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
-        else {
-            dispatch(deleteActivities(delAct));
-            alert('Activity Deleted!')
+        dispatch(deleteActivities(delAct));
+            alert('Actividad eliminada')
             setDelAct('');
-            reload();
-        }
+            //reload();
+        
     }
     
     //------------------------useEffect------------------------
@@ -114,7 +112,7 @@ const Form = () => {
         <div className={style.contenedor}>
             {/* -----------------------Create activity sector----------------------- */}
             <div className={style.formContainer}>
-                <p className={style.titulo}>Create your Activity</p>
+                <p className={style.titulo}>Crear Actividad</p>
                 <form onSubmit={(e) => handleSubmit(e)}>
 
                     
@@ -223,7 +221,7 @@ const Form = () => {
                    
 
                     <div>
-                        <button className={style.reload} type="submit" disabled={input.name === ''||input.difficulty==='' || input.duration===''||input.season===''||input.countryId.length<0||errors.name||errors.difficulty||errors.duration||errors.season||errors.countryId}>Create</button>
+                        <button className={style.reload} type="submit" disabled={input.name === ''||input.difficulty==='' || input.duration===''||input.season===''||input.countryId.length<0||errors.name||errors.difficulty||errors.duration||errors.season||errors.countryId}>Crear</button>
                         
                     </div>
                 </form>
@@ -232,7 +230,7 @@ const Form = () => {
             {/* -----------------------Delete activity sector----------------------- */}
             <div className={style.formContainerdel}>
                 <div >
-                <p className={style.titulo}>Delete Activity</p>
+                <p className={style.titulo}>Eliminar Actividad</p>
                 <form onSubmit={(event) => handleSubmitDelete(event)}>
                     
                         <div className={style.formField}>
@@ -249,18 +247,18 @@ const Form = () => {
                             </div>
                         </div>
 
-                    <p className={style.elegidos} >Activity to delete: {delAct}</p>
+                    <p className={style.elegidos} >Actividad a eliminar: {delAct}</p>
 
                     <div>
-                        <button className={style.reload} type="submit" disabled={delAct===''}>Delete</button>
+                        <button className={style.reload} type="submit" disabled={delAct===''}>Borrar</button>
                         
                     </div>
                 </form>
             {/* -----------------------Reload sector----------------------- */}
                 </div>
-            <div>
+            {/* <div>
                 <button className={style.reloadd} onClick={reload}>Reset Form</button>
-            </div>
+            </div> */}
             </div>
 
         </div>

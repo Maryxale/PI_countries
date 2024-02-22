@@ -6,8 +6,7 @@ import LandingPage from './components/landingPage/LandingPage';
 import { Routes, Route, useLocation} from 'react-router-dom';
 import Detail from './components/detail/Detail';
 import Nav from './components/nav/Nav';
-
-
+import Form from './components/form/Form';
 
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
           <Route path='/' element={<LandingPage/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
-        
+          <Route path='/form' element={<Form/>}/>
         </Routes>
       </div> 
   </div>

@@ -1,6 +1,7 @@
 // Revisar y/o agregar comentarios
 const { Router } = require('express');
 const postActivities = require('../controllers/postActivities')
+const deleteActivity = require('../controllers/deleteActivity')
 const { Activity } = require('../db');
 
 const router = Router();
@@ -28,5 +29,20 @@ router.get('/', async (req, res) => {
         return res.status(400).send(error);
     }
 })
+
+//se elimina por un nombre que llegue por query (delete)
+router.delete('/', async (req, res) => {
+    const { name } = req.query;
+    try {
+      const Deleted = await deleteActivity(name); //cambie el nombre de variable
+      if (Deleted) {
+        return res.status(200).json({ message: 'Actividad eliminada' });
+      } else {
+        return res.status(404).json({ message: 'Actividad no encontrada' });
+      }
+    } catch (error) {
+      return res.status(500).json({ message: 'Error al eliminar la actividad' });
+    }
+  });
 
 module.exports = router;

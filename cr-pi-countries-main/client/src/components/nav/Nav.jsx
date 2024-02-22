@@ -5,7 +5,7 @@ const Nav = () => {
     return (
     <div className={style.barra}>
         
-        <NavLink className={style.countries} to="/home">Countries PI</NavLink>
+        <NavLink className={style.countries} to="/home">Countries</NavLink>
         <NavLink className={style.select} to="/">Salir</NavLink> 
         <NavLink className={style.select} to="/form">Crear Actividad</NavLink>
         

@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
         }
     } catch (error) {
         console.log(error)
-        return res.status(500).json({ error: 'GetCountries - Internal Server Error' }); // Mejorar Mensaje de error
+        return res.status(500).json({ error: 'Error de servidor' }); 
     }
 });
 
