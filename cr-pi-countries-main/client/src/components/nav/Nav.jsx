@@ -3,7 +3,7 @@ import style from './Nav.module.css'
 
 const Nav = () => {
     return (
-    <div className={style.barra}>
+    <div className={style.nav}>
         
         <NavLink className={style.countries} to="/home">Countries</NavLink>
         <NavLink className={style.select} to="/">Salir</NavLink> 

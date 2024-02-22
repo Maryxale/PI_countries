@@ -1,5 +1,5 @@
-.barra{
-    border: 0.4vh solid rgb(0, 0, 0);
+.nav{
+    border: 0.4vh solid #6096ba;
     border-radius: 20px;
     margin-bottom: 1vh;
     margin-right: 2%;
@@ -14,14 +14,14 @@
 }
 
 .select{
-    font-family:"Consolas";
+    font-family:cursive;
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
     margin-left: 0.3vw;
     margin-right: 0.3vw;
     font-weight: bold;
-    font-size: 2.2vh;
+    font-size: 3.1vh;
     
 }
 
@@ -29,11 +29,11 @@
     color: white;
 }
 
-.search{
+.buscar{
     width: 20vw;
     height: 5vh;
     margin-left: 19vw;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 10px 0px 0px 10px;
     background-color: white;
     transition: 0.3s;
@@ -41,48 +41,45 @@
     
 }
 
-.search:hover{
-    background-color: black;
+.buscar:hover{
+    background-color: #274c77;
     color: white;
 } 
 
-.buttonsearch{
+.botonbuscar{
     width: 7vw;
     height: 5vh;;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(53, 52, 52);
     transition: 0.3s;
-    color: black;
-    margin-left: 0x;
+    color: #274c77;
+    margin-left: 0px;
     margin-right: 1vw;
     font-weight: bold;
     font-size: 2.5vh;
     cursor: pointer;
 }
 
-.buttonsearch:hover{
+.botonbuscar:hover{
     background-color: white;
 }
-.buttonsearch:disabled{
+.botonbuscar:disabled{
     color: rgb(73, 73, 73);
     background-color: rgb(53, 52, 52);
     cursor:default;
 }
 
 
-a:link, a:visited, a:active {
+ a:link, a:visited, a:active {
     text-decoration:none;
-    color: rgb(189, 189, 189);
+    color: #274c77;
     transition: 0.5s;
-}
+} 
 
-a:hover{
-    color:white;
-}
 
-.countries{
-    font-family:"Consolas";
+/* .countries{
+    font-family:cursive;
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
@@ -92,30 +89,21 @@ a:hover{
     font-size: 2.7vh;
     color: black;
     cursor: pointer;
-}
-
-.img{
-    height: 4vh;
-    width: 4vh;
-    margin-left: 1vh;
-    margin-right:1vh;
-    transition: 0.5s;
-    border-radius: 20px;
-}
+} */
 
 
 .alink:hover{
     filter:invert(100%)
 }
 
-.buttonsearchh{
+.botonBuscar{
     width: 10vw;
     height: 5vh;;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 10px;
-    background-color: rgb(53, 52, 52);
+    background-color: white;
     transition: 0.3s;
-    color: black;
+    color: #274c77;
     margin-left: 0x;
     margin-right:11.5vw;
     font-weight: bold;
@@ -123,6 +111,7 @@ a:hover{
     cursor: pointer;
 }
 
-.buttonsearchh:hover{
-    background-color: white;
+.botonBuscar:hover{
+    background-color:#274c77;
+    color: white;
 }

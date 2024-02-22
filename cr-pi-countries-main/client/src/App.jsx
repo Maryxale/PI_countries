@@ -13,10 +13,11 @@ function App() {
   const location = useLocation();
 
 
+//renderizar nav solo si no esta en '/' o '/home'
   return (
   <div className="App">
       <div className='dark'>
-      { location.pathname !== '/' && location.pathname !== '/home' ? <Nav/>: null }
+      { location.pathname !== '/' && location.pathname !== '/home' ? <Nav/>: null } 
 
         <Routes>
           <Route path='/' element={<LandingPage/>}/>

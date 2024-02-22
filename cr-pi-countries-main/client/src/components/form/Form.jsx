@@ -112,7 +112,7 @@ const Form = () => {
         <div className={style.contenedor}>
             {/* -----------------------Create activity sector----------------------- */}
             <div className={style.formContainer}>
-                <p className={style.titulo}>Crear Actividad</p>
+                <p className={style.titulo}>Nueva Actividad</p>
                 <form onSubmit={(e) => handleSubmit(e)}>
 
                     

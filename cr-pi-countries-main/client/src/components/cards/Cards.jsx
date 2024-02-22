@@ -16,10 +16,13 @@ function Cards({countries}){
               
               />
             ))
+            
           }
-          
+        
         </div>
+        
       )
+     
 }
 
 

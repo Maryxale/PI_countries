@@ -79,12 +79,12 @@ const handleOrderBy = (evento) => {
     <SearchBar handleFilter={handleFilter} onPageChange={handlePageChange} />
   </div>
   <div className={style.home}>
-    <div className={style.costado}>
+    <div className={style.lado}>
       {/* ------------------Filtros-------------------- */}
-      <div className={style.filterContainer}>
-        <h1 className={style.title}>Filtros</h1>
+      <div className={style.filtroContainer}>
+        <h1 className={style.titulos}>Filtros</h1>
         <div>
-          <h3 className={style.subtitle}>Filtrar Continente</h3>
+          <h3 className={style.subtitulos}>Filtrar Continente</h3>
           <select className={style.select} onChange={handleContinent}>
             <option value='All'>Todos los Continentes</option>
             <option value='Africa'>Africa</option>
@@ -97,7 +97,7 @@ const handleOrderBy = (evento) => {
           </select>
         </div>
         <div>
-          <h3 className={style.subtitle}>Filtrar Actividad</h3>
+          <h3 className={style.subtitulos}>Filtrar Actividad</h3>
           <select className={style.select} onChange={handleActivity}>
             <option value="All">Actividades</option>
               {allActivities && allActivities.map((activity) => {
@@ -107,12 +107,12 @@ const handleOrderBy = (evento) => {
             })}
           </select>
         </div>
-        <button className={style.reload} type="submit" onClick={handleFilter}>Aplicar</button>
+        <button className={style.botones} type="submit" onClick={handleFilter}>Aplicar</button>
       </div>
-      {/* ---------Ordenamiento por nombre y poblacion--------- */}
+      {/*Ordenamiento por nombre y poblacion*/}
       <div className={style.orderContainer}>
-        <h1 className={style.title}>Ordenar Por</h1>
-        <h3 className={style.subtitle}>Nombre/Poblacion</h3>
+        <h1 className={style.titulos}>Ordenar Por</h1>
+        <h3 className={style.subtitulos}>Nombre/Poblacion</h3>
         <select className={style.select} onChange={handleOrderBy} value={order}>
           <option value="" disabled selected>Ordenar</option>
           <option value='NombreAscendente'>Nombre A - Z</option>
@@ -125,7 +125,7 @@ const handleOrderBy = (evento) => {
     <div className={style.container}>
       <Cards countries={currentElements}/>
       <div className={style.espacio}></div>
-      <div className={style.pag}>
+      <div className={style.paginas}>
         <Pagination
           pageCurrent={pageCurrent}
           pageFinal={pageFinal}
