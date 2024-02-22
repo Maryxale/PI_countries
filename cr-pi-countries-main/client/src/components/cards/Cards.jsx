@@ -1,8 +1,5 @@
 import Card from "../card/Card";
 import React from "react";
-import CardsStyles from './Cards.module.css';
-
-
 
 function Cards({countries}){
     return (

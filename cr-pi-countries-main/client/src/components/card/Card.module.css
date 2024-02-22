@@ -2,12 +2,15 @@
     border-radius: 15px;
     height:33vh;
     width:14vw;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px; /*los margin para darles el espaciado*/
+    margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.452);
     color: #f5efe8;
     transition: 0.5s;
     font-family:"Consolas";
+    float: left; /* para colocar las cards horizontal*/
   }
   
   
