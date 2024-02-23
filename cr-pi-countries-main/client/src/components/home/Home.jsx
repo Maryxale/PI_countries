@@ -99,7 +99,7 @@ const handleOrderBy = (evento) => {
         <div>
           <h3 className={style.subtitulos}>Filtrar Actividad</h3>
           <select className={style.select} onChange={handleActivity}>
-            <option value="All">Actividades</option>
+            <option value="All">Todas las Actividades</option>
               {allActivities && allActivities.map((activity) => {
               return (
                 <option value={activity.name}>{activity.name}</option>

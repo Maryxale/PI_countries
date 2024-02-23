@@ -26,7 +26,7 @@
     width: 55%;
     margin-left: 1rem;
     margin-bottom: 1rem;
-    font-family: "Consolas";
+    font-family: cursive;
     margin-top: 8%;
   }
   
@@ -47,7 +47,7 @@
     margin: 0;
     color:blanchedalmond;
     box-shadow: 0 0 5px 5px rgb(39, 39, 39);
-    border-radius: 8px;
+    border-radius: 15px;
     font-family: cursive;
   }
 

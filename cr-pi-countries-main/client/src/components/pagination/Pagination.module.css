@@ -3,19 +3,20 @@
     height: 5vh;
     margin-bottom: 0;
     font-family:"Consolas";
-    border-radius: 10px;
-    background-color: rgb(53, 52, 52);
+    border-radius: 15px;
+    background-color: rgb(250, 248, 248);
     transition: 0.3s;
-    color: black;
+    color:#274c77;
     margin-left: 5px;
     margin-right: 5px;
     font-weight: bold;
-    font-size: 2.5vh;
+    font-size: 2.8vh;
     cursor: pointer;
 }
 
 .select:hover{
-    background-color: white;
+    background-color: #274c77;
+    color: white;
 }
 
 .select:disabled{
@@ -25,11 +26,10 @@
 }
 
 .text {
-    /* margin-top: 5px; */
-    font-family:"Consolas";
+    font-family:cursive;
     margin-bottom: 0px;
-    color: white;
+    color: #274c77;
     font-weight: bold;
     margin-bottom: 0px;
-    font-size: 2.5vh;
+    font-size: 3vh;
 }

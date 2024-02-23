@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
-import CardStyles from './Card.module.css';
+import style from './Card.module.css';
 
 
 
@@ -10,14 +10,14 @@ import CardStyles from './Card.module.css';
 function Card ({id, name, flags, continent}){
     return (
         <NavLink to={`/detail/${id}`}>
-          <div className={CardStyles.divCard}>
-            <div className={CardStyles.divTop}>
-              <div className={CardStyles.divImg}>
-                <img className={CardStyles.imgCard} src={flags} alt="Country" />
+          <div className={style.Card}>
+            <div className={style.Top}>
+              <div className={style.Img}>
+                <img className={style.imgCard} src={flags} alt="Country" />
               </div>
-              <div className={CardStyles.divTitles}>
-                <h4 className={CardStyles.title}>{name}</h4>
-                <h6 className={CardStyles.subtitle}>Continent: {continent}</h6>
+              <div className={style.Titulos}>
+                <h4 className={style.titulo}>{name}</h4>
+                <h6 className={style.subtitulo}>Continent: {continent}</h6>
               </div>
             </div>
           </div>

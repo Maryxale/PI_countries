@@ -72,7 +72,7 @@ const Form = () => {
         }
     }
 
-    //------------------------Delete Activity------------------------
+    //Delete Activity
     const [delAct, setDelAct] = useState('');
 
     const handleSelectDelete = (event) => {
@@ -86,11 +86,11 @@ const Form = () => {
         dispatch(deleteActivities(delAct));
             alert('Actividad eliminada')
             setDelAct('');
-            //reload();
+            
         
     }
     
-    //------------------------useEffect------------------------
+    //useEffect
     useEffect(() => {
         dispatch(getCountry())
     }, [dispatch]);
@@ -110,7 +110,7 @@ const Form = () => {
 
     return (
         <div className={style.contenedor}>
-            {/* -----------------------Create activity sector----------------------- */}
+            {/*Create activity sector*/}
             <div className={style.formContainer}>
                 <p className={style.titulo}>Nueva Actividad</p>
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -221,13 +221,13 @@ const Form = () => {
                    
 
                     <div>
-                        <button className={style.reload} type="submit" disabled={input.name === ''||input.difficulty==='' || input.duration===''||input.season===''||input.countryId.length<0||errors.name||errors.difficulty||errors.duration||errors.season||errors.countryId}>Crear</button>
+                        <button className={style.nav} type="submit" disabled={input.name === ''||input.difficulty==='' || input.duration===''||input.season===''||input.countryId.length<0||errors.name||errors.difficulty||errors.duration||errors.season||errors.countryId}>Crear</button>
                         
                     </div>
                 </form>
             </div>
 
-            {/* -----------------------Delete activity sector----------------------- */}
+            {/*Delete activity sector */}
             <div className={style.formContainerdel}>
                 <div >
                 <p className={style.titulo}>Eliminar Actividad</p>
@@ -250,15 +250,12 @@ const Form = () => {
                     <p className={style.elegidos} >Actividad a eliminar: {delAct}</p>
 
                     <div>
-                        <button className={style.reload} type="submit" disabled={delAct===''}>Borrar</button>
+                        <button className={style.nav} type="submit" disabled={delAct===''}>Borrar</button>
                         
                     </div>
                 </form>
-            {/* -----------------------Reload sector----------------------- */}
                 </div>
-            {/* <div>
-                <button className={style.reloadd} onClick={reload}>Reset Form</button>
-            </div> */}
+           
             </div>
 
         </div>

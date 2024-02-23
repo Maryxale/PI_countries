@@ -1,25 +1,25 @@
-.divCard {
-    border-radius: 15px;
-    height:33vh;
+.Card {
+    border-radius: 60px;
+    height:34vh;
     width:14vw;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px; /*los margin para darles el espaciado*/
     margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.452);
-    color: #f5efe8;
-    transition: 0.5s;
-    font-family:"Consolas";
-    float: left; /* para colocar las cards horizontal*/
-  }
-  
-  
-  .divCard:hover{
     background-color: rgba(255, 255, 255, 0.452);
-    color: black
+    color: #274c77;
+    transition: 0.5s;
+    font-family:cursive;
+    float: left; /* para colocar las cards horizontal*/
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
   }
   
-  .divTop {
+  .Card:hover{
+    background-color: rgba(255, 255, 255, 0.452);
+    color: black;
+  }
+  
+  .Top {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,7 @@
     padding: 0;
   }
   
-  .divTitles {
+  .Titulos {
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -36,7 +36,7 @@
     padding: 2%;
   }
   
-  .divImg {
+  .Img {
     display: flex;
     justify-content: left;
     position: relative;
@@ -48,19 +48,19 @@
     margin-right: auto;
     display: flex;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 70px;
     height: 15vh;
     width: 10vw;
     align-self: center; 
   }
   
-  .title {
+  .titulo {
     margin-top: 0.8vh;
     margin-bottom: 0.3vh;
     font-size: 2.5vh;
   }
   
-  .subtitle {
+  .subtitulo {
     margin-top: 0.3vh; 
-    font-size: 1.7vh;
+    font-size: 2vh;
   }

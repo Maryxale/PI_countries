@@ -3,14 +3,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 0.4vh solid black;
     width: 35vw;
     padding: 4vh;
-    border-radius: 15px;
-    font-family:"Consolas";
-    background-color: rgba(0, 0, 0, 0.253);
+    border-radius: 25px;
+    font-family:cursive;
+    background-color: rgba(255, 255, 255, 0.253);
     margin-left: 5vw;
     margin-right:4vw;
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
+    margin-top: 5px;
   }
 
   .formContainerdel {
@@ -18,33 +19,37 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 0.4vh solid black;
     width: 35vw;
     padding: 4vh;
     border-radius: 15px;
-    font-family:"Consolas";
-    background-color: rgba(0, 0, 0, 0.253);
+    font-family:cursive;
+    background-color: rgba(253, 251, 251, 0.253);
     margin-left: 4vw;
     margin-right:5vw;
     height:50vh;
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
+    margin-top: 8px;
   }
 
   .titulo{
     margin-top: 1.3vh;
     margin-bottom: 2vh;
-    text-transform: uppercase;
-    text-decoration: underline;
     font-size: 6vh;
-    font-family:"Consolas";
-    font-weight: bold;
+    font-family:cursive;
+    font-weight:normal;
     color: white;
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
+    /* border-radius:15px; */
+
+    border-radius: 10px;
+    padding: 5px;
   }
   
   .formField {
     align-items: center;
     text-align: center;
     height: 11.5vh;
-    font-family:"Consolas";
+    font-family:cursive;
   }
   
   .formInput {
@@ -53,14 +58,14 @@
     position: relative;
     padding: 0px;
     border: 0px;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(53, 52, 52);
     transition: 0.3s;
     border: 0.1vh solid black;
     font-size: 3vh;
     text-align: center;
-    color: rgb(114, 114, 114);
+    color: #274c77;
   }
 
   .formInputdel {
@@ -85,7 +90,7 @@
     position: relative;
     padding: 0px;
     border: 0px;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(53, 52, 52);
     transition: 0.3s;
@@ -95,9 +100,9 @@
   }
 
   .label{
-    padding: 1.2vh;
+    padding: 0.85vh;
     width: 11vw;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 10px 0px 0px 10px;
     background-color: rgba(0, 0, 0, 0.384);
     text-align: center;
@@ -119,19 +124,23 @@
   }
   
   .formError {
-    color: red;
-    font-size: 2vh;
+    
     margin-top: 0px; 
+    border-radius: 10px;
+    color: #ffa;
+    text-shadow: 0 0 30px #fff;
+    background-color: red;
+    
   }
 
   .elegidos{
-    font-family:"Consolas";
+    font-family:cursive;
     justify-content: center;
     text-align: center;
     padding: 0px;
     width: 30vw;
-    font-size: 3vh;
-    color: white;
+    font-size: 4vh;
+    color: #e7ecef;
 
   }
 
@@ -145,42 +154,42 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-family:"Consolas";
+    font-family:cursive;
     height: 90vh;
     
   }
 
-  .reload{
+  .nav{
     width: 10vw;
     height: 5vh;
     margin-top: 8vh;
     margin-bottom: 0px;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 10px;
     background-color: white;
     cursor: pointer;
     border-color: #ffffff;
-    color: black;
+    color: #274c77;
     border: 0.4vh;
      box-shadow: 0 0 5px 5px rgb(39, 39, 39);
      -webkit-transition: all 150ms ease-in-out;
     transition: 0.5s;
     font-size: 3vh;
     font-weight: bold;
-}
+  }
 
-.reload:hover{
-    background-color: black;
+.nav:hover{
+    background-color: #274c77;
     color: white;
 } 
 
-.reload:disabled{
+.nav:disabled{
   background-color: white;
   color: rgb(100, 98, 98);
   cursor:default;
 }
 
-.reloadd{
+.navv{
     width: 15vw;
     height: 8vh;
     margin-top: 22vh;
@@ -198,7 +207,7 @@
     font-weight: bold;
 }
 
-.reloadd:hover{
+.navv:hover{
     background-color: black;
     color: white;
 } 

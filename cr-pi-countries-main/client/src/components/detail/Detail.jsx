@@ -21,7 +21,7 @@ function Detail(){
       <div className={styles.containerPagina}>
           <div className={styles.containerImg}>
               <h1 className={styles.pais}>{countries?.name}</h1>
-              <img className={styles.img} src={countries?.flags} alt={countries?.name} />
+                <img className={styles.img} src={countries?.flags} alt={countries?.name} />
           </div>
     
             <div>

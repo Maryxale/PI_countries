@@ -3,6 +3,7 @@
     font-family:cursive;
     flex-direction: row;
     justify-content: center;
+   
   }
 
   .containerImg{
@@ -14,25 +15,29 @@
     margin-left: 1vw;
     width: 53vw;
     height: 88.5vh;
-    border: 0.4vh solid #6096ba;
     border-radius: 15px;
     margin-top: 0.5vh;
     background-color:rgba(255, 255, 255, 0.253);
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
   }
 
   .pais{
     margin-top: 0px;
-    text-transform: uppercase;
-    font-size: 7.5vh;
+    font-size: 6vh;
     color: white;
     font-weight: bolder;
+
+    font-family: cursive;
+    border-radius: 10px;
+    padding: 3px;
   }
 
   .img {
-    width: 60%;
+    width: 50%;
     background-color: #0000007b;
     border-radius: 50px;
     margin-left: 1vh;
+    margin-top: 10px;
   }
 
   .containerDetalle{
@@ -42,14 +47,17 @@
     align-items: center;
     width: 45vw;
     height: 38.9vh;
-    background-color:rgba(0, 0, 0, 0.555);
-    border: 2px solid black;
+    background-color:rgba(246, 243, 243, 0.555);
     border-radius: 15px;
     margin-bottom: 1vh;
     padding-bottom: 4.5vh;
     margin-top:0.5vh;
-    color: white;
+    color: #274c77;
     margin-right: 0.5vw;
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
+    margin-top: 8px;
+
+
   }
 
   .actcontainer{
@@ -59,19 +67,22 @@
     width: 12vw;
     height:17vh;
     background-color: rgba(0, 0, 0, 0.452);
-    border: 0.4vh solid black;
     padding: 0.4vh;
     border-radius: 15px;
     align-items: center;
-    color: white;
+    color:#274c77;
+    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
+    margin-top: 10px;
   }
 
 .titulos{
-  text-transform: uppercase;
-  text-decoration: underline;
-  font-size: 6vh;
+  font-family:cursive;
+  font-weight:normal;
+  font-size: 4vh;
   margin-top: 0.5vh;
   margin-bottom: 1vh;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .text{
@@ -98,5 +109,5 @@
  }
 
  .Loading{
-  font-size: 2vh;
+  font-size: 2.5vh;
  }
