@@ -15,30 +15,18 @@ function Cards({countries}){
               continent={c.continent}
               
               />
+              
             ))
-            
+           
           }
+           
         
         </div>
         
       )
-     
+      
 }
 
-
-//  const Cards = ({id, name, flags, continent}) => {
-//     return(
-    
-//         <Card
-//          key={id}
-//         id={id}
-//         name={name}
-//         flags={flags}
-//         continent={continent}
-//          />
-    
-//      )
-//  }
 
 
 export default Cards;

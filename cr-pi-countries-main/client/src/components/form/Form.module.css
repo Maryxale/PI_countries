@@ -194,7 +194,7 @@
     height: 8vh;
     margin-top: 22vh;
     margin-bottom: 0px;
-    font-family:"Consolas";
+    font-family:cursive;
     border-radius: 10px;
     background-color: rgb(53, 52, 52);
     cursor: pointer;
@@ -211,3 +211,4 @@
     background-color: black;
     color: white;
 } 
+

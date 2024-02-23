@@ -22,18 +22,21 @@ function SearchBar(props){
       evento.preventDefault();
       dispatch(searchName(name));
       setName('')
+      
       props.onPageChange(1);
+     
    }
    
+   
+  
 
-    
 //ver si agrego el reload
     return (
        <div className={style.nav}> 
           
          <input className={style.buscar} type='search' onChange={(evento) => handleChange(evento) } placeholder="Buscar por nombre" value={name} /> 
 
-         <button className={style.botonbuscar} type='submit' disabled={name === ''} onClick={(evento) => handleSubmit(evento)}>Buscar</button> 
+         <button className={style.botonbuscar} type='submit' disabled={name === ''}   onClick={(evento) => handleSubmit(evento)}>Buscar</button> 
 
          <button className={style.botonBuscar} type='submit' onClick={(event) => props.handleFilter(event)}>Reset</button>
 

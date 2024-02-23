@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getCountry, addActivity, getActivity, deleteActivities } from '../../redux/actions';
 import validate from "./validate";  //validacion en js
 import style from "./Form.module.css"
+import { NavLink } from "react-router-dom";
 
 const Form = () => {
     const dispatch = useDispatch();
@@ -255,10 +256,13 @@ const Form = () => {
                     </div>
                 </form>
                 </div>
-           
+                
             </div>
-
+            
         </div>
+        
+       
+        
     )
 }
 

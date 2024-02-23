@@ -25,24 +25,25 @@
     color: white;
 }
 
-.countries{
-    font-family:cursive;
+.mundo{
+
+     font-family:cursive;
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
     margin-left: 1vw;
-    margin-right: 70vw;
+    margin-right: 60vw;
     font-weight: bold;
     font-size: 2.7vh;
     color: black;
-    cursor: pointer; 
+    cursor: pointer;  
 }
 
-.countries:hover{
+.mundo:hover{
     color: white;
 }
 
-.Top
+
 
 
 .alink:hover{

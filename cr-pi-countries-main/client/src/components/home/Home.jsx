@@ -7,12 +7,16 @@ import SearchBar from "../searchBar/SearchBar";
 import Pagination from "../pagination/Pagination";
 
 
+const reiniciar = () => {
+  location.reload(false)  //para darle funcionalidad al boton reiniciar
+}
+//const URL = 'http://localhost:3001/activities?name='
 function Home(){
   
   const dispatch = useDispatch();
   const Countries = useSelector(state => state.countries)
   const allActivities = useSelector((state) => state.activities);
-
+ 
   //paginado del home
   const [pageCurrent, setpageCurrent] = useState(1); //indicamos la pagina actual
   const PorPage = 10; //cantidad por pagina
@@ -36,6 +40,7 @@ function Home(){
   const [filterActivity, setfilterActivity] = useState("All")
   const [order, setOrder] = useState("");
 
+ 
 //filtrado
 const handleContinent = (evento) => {
   evento.preventDefault();
@@ -76,8 +81,10 @@ const handleOrderBy = (evento) => {
 
 <div >
   <div>
-    <SearchBar handleFilter={handleFilter} onPageChange={handlePageChange} />
+    <SearchBar handleFilter={handleFilter} onPageChange={handlePageChange}/>
+  
   </div>
+    
   <div className={style.home}>
     <div className={style.lado}>
       {/* ------------------Filtros-------------------- */}
@@ -121,9 +128,16 @@ const handleOrderBy = (evento) => {
           <option value='PoblacionDescendente'>Población Alta-Baja</option>
         </select>
       </div>
+      <button className={style.botones} onClick={() => {reiniciar()}}>Reiniciar</button>
     </div>
     <div className={style.container}>
-      <Cards countries={currentElements}/>
+
+    {currentElements.length === 0 ? (
+    <p className={style.mensaje}>Country not Found!!</p> //validacion para notificar al usuario que el nombre es invalido 
+  ) : (
+    <Cards countries={currentElements} /> 
+  )}
+  
       <div className={style.espacio}></div>
       <div className={style.paginas}>
         <Pagination
