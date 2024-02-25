@@ -9,6 +9,8 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
+//native:false: define que sequelize llevara el mando del servidor
+//logging: false (para que no haga por default el log a consola de todas las sentencias SQL)
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false, 
   native: false, 
@@ -38,7 +40,7 @@ const { Country, Activity } = sequelize.models;
 
 Country.belongsToMany(Activity, {through: 'country_activity'});
 
-Activity.belongsToMany(Country, {through: 'country_activity'});
+Activity.belongsToMany(Country, {through: 'country_activity'}); //relacion de muchos a muchos
 
 
 // Aca vendrian las relaciones

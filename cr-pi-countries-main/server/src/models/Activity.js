@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         difficulty: {
-            type: DataTypes.ENUM('1', '2', '3', '4', '5'),
+            type: DataTypes.ENUM('1', '2', '3', '4', '5'), //enum selector multiple y guarda como un array con los valores que tendran disponibles
             allowNull: false,
         },
         duration: {

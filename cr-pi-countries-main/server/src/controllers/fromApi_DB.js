@@ -2,7 +2,8 @@ const { Country } = require('../db.js');
 
 const axios = require('axios');
 
-//Obtengo la informacion de la Api
+//Info desde la Api
+//El mapeo me devuelve un array con esos objetos, donde cada objeto es un pais. 
 const InfoApi = async () => {
     try {
         const response = await axios.get('http://localhost:5000/countries'); 
@@ -17,25 +18,25 @@ const InfoApi = async () => {
                 area: country.area? country.area: 'undefined',
                 population: country.population? country.population: 'undefined',
             }
-        }); //hago un mapeo de la respuesta de la api, y guardo en una constante un objeto con la info de la api que quiero guardar. 
-            //El mapeo me va a devolver un array con esos objetos, donde cada objeto es un pais. 
+        }); 
+            
         return countries; 
     } catch (error) {
-        console.log('Error al obtener los datos de la Api', error);
+        console.log('No se obtuvo datos de la Api', error);
     }
 };
 
-//Traigo la info de la Api y la cargo en mi Base de Datos
+//subo la info a mi base de datos
 const fromApi_DB = async () => {
     try {
-        const DataBase  = await Country.findAll(); //guardo en una constante todos los paises que existan en la Base de Datos
+        const DataBase  = await Country.findAll(); //const para guardar los paises
 
-        if(DataBase .length < 1) {
+        if(DataBase.length < 1) {
             const allCountries = await InfoApi();
             await Country.bulkCreate(allCountries);
-        }//si no encuentro ningun pais en mi DB, guardo en una constante la respuesta de mi controler ApiData. Ejecuto el metodo bulkCreate, pasadole el array de objetos y cargar en mi DB todos los paises. 
+        }//Ejecuto el metodo bulkCreate y asi cargar en mi base de datos todos los paises
     } catch (error) {
-        console.log('Error al cargar los datos de la Api en la Data Base',error);
+        console.log('Error al subir los datos de la api a la base de datos',error);
     }
 };
 

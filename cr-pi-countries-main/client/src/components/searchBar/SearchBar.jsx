@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchName } from "../../redux/actions"; //action a utilizar
 import { NavLink } from 'react-router-dom';
-
 import React from "react";
 import style from './SearchBar.module.css';
 
@@ -30,7 +29,7 @@ function SearchBar(props){
    
   
 
-//ver si agrego el reload
+
     return (
        <div className={style.nav}> 
           

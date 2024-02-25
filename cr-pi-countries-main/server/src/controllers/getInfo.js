@@ -12,7 +12,7 @@ const getInfo = async () => {
                     attributes: [],
                 },
             }
-        }) //busco todos los paises e incluyo la relacion que tiene cada uno con el modelo Activity, de esta forma cada pais va a tener un atributo "Activities" con los atributos de las actividades con las que esta relacionado. 
+        }) 
     } catch (error) {
         console.log('Error al obtener todos los Paises de la DB incluyendo sus Actividades', error);
     }

@@ -7,7 +7,7 @@ import styles from './Detail.module.css';
 
 function Detail(){
 
-    const {id}= useParams();
+    const {id}= useParams(); //acceder al parametro id
     const countries= useSelector(state => state.details)
     const dispatch= useDispatch();
 //traer la accion

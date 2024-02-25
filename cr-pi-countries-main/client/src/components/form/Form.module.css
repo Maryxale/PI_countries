@@ -39,13 +39,11 @@
     font-weight:normal;
     color: white;
     box-shadow: 0 0 5px 5px rgb(39, 39, 39);
-    /* border-radius:15px; */
-
     border-radius: 10px;
     padding: 5px;
   }
   
-  .formField {
+  .formCampo {
     align-items: center;
     text-align: center;
     height: 11.5vh;

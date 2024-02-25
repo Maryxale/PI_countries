@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
+import { GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME,  ORDER_BY, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
 
 export const getCountry = () => {
     const endpoint = 'http://localhost:3001/countries';  
@@ -109,12 +109,3 @@ export const orderBy = (payload) => {
     }
 }
 
-
-
-export const loading = (payload) => {
-    return{
-        type: LOADING,
-        payload
-
-    }
-    }

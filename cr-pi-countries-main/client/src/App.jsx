@@ -1,5 +1,3 @@
-
-
 import './App.css'
 import Home from './components/home/Home';
 import LandingPage from './components/landingPage/LandingPage';
@@ -12,7 +10,7 @@ import Form from './components/form/Form';
 function App() {
   const location = useLocation();
 
-
+//enrutamiento
 //renderizar nav solo si no esta en '/' o '/home'
   return (
   <div className="App">

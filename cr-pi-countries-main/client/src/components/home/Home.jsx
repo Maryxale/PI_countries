@@ -10,7 +10,7 @@ import Pagination from "../pagination/Pagination";
 const reiniciar = () => {
   location.reload(false)  //para darle funcionalidad al boton reiniciar
 }
-//const URL = 'http://localhost:3001/activities?name='
+
 function Home(){
   
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function Home(){
   
   useEffect(() => {
     dispatch(getActivity())
-  }, [dispatch]); //array
+  }, [dispatch]); 
 
   //estado para FILTRADOS
   const [filterContinent, setfilterContinent] = useState("All")
@@ -61,7 +61,7 @@ const handleFilter = () => {
     activity: filterActivity,
   };
   dispatch(filterContinentActivity(filters));
-  setOrder(""); // setea el select de ordenamiento
+  setOrder(""); 
 };
 
 const handleOrderBy = (evento) => {
@@ -87,7 +87,7 @@ const handleOrderBy = (evento) => {
     
   <div className={style.home}>
     <div className={style.lado}>
-      {/* ------------------Filtros-------------------- */}
+      {/*Filtros*/}
       <div className={style.filtroContainer}>
         <h1 className={style.titulos}>Filtros</h1>
         <div>
@@ -133,9 +133,9 @@ const handleOrderBy = (evento) => {
     <div className={style.container}>
 
     {currentElements.length === 0 ? (
-    <p className={style.mensaje}>Country not Found!!</p> //validacion para notificar al usuario que el nombre es invalido 
+    <p className={style.mensaje}>No se encontro Pais!!</p> //validacion para notificar al usuario que el nombre es invalido 
   ) : (
-    <Cards countries={currentElements} /> 
+    <Cards countries={currentElements} /> //renderizo mis cards
   )}
   
       <div className={style.espacio}></div>

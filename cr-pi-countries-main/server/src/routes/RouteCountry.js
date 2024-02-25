@@ -1,8 +1,9 @@
-// Revisar y/o agregar comentarios
+//rutas countries
+
 const { Router } = require('express')
-const fromApi_DB = require('../controllers/fromApi_DB'); // Obtener 
-const getInfo = require('../controllers/getInfo'); // Obtener
-const { Op } = require('sequelize'); // revisar si sacarlo
+const fromApi_DB = require('../controllers/fromApi_DB'); // Obtengo info desde la Api
+const getInfo = require('../controllers/getInfo'); // Obtener info desde la base de datos
+
 
 const router = Router();
 
@@ -15,13 +16,13 @@ router.get('/', async (req, res) => {
     
     try {
         if(!name) {
-            return res.status(200).json(InfoDB); //si no me pasan "name" por query, devuelvo todos los paises. 
+            return res.status(200).json(InfoDB); //si no me pasan por name, paso todos los paises
         }
         else {
-            //si si obtengo a "name" por query, hago un filter de lo que tengo en mi BD y comparo, si alguno de los nombres(propiedad name) de todos los objetos(paises) en minusculas (convertida toda la palabra en minuscula), incluye a lo que me llega en "name" tambien convertido en minuscula. ¿Por que?, para de esta forma buscar cualquier tipo de coincidencia, por ejemplo si en mi objeto de mi pais Argentina, su name es Argentina con minuscula, si me viene por query 'argent' va a devolver igual mi objeto con name "Argentina". 
+            //si llega por name, con el filter e includes me aseguro que devuelva el pais independientemente de como lo escriban
             const CountryFilter = InfoDB.filter(element => element.name.toLowerCase().includes(name.toLowerCase()));
             
-            //si el array que me devuelve el filter esta vacio, devuelvo un estado 400 y un mensaje adecuando. Sino, un estado 200 OK, y mi array con mi objeto de paises que tuvieron una coincidencia en su propiedad name. 
+            //si esta vacio se pasa un mensaje desde le front, sino este 200 con la info de pais
             return res.status(200).json(CountryFilter)
         }
     } catch (error) {
@@ -33,22 +34,22 @@ router.get('/', async (req, res) => {
 
 //GET | /countries/:idPais
 router.get('/:idPais', async (req, res) => {
-    const {idPais} = req.params; //
-    const ContryAll = await getInfo(); //
+    const {idPais} = req.params; 
+    const ContryAll = await getInfo(); 
 
     try {
         if(idPais) {
-            //si recibo por params un ID, me fijo con un find si encuentro coincidencia con algun ID de todos los paises que tengo en mi DB
+            //con el find verifico si coincide el id con el de mis paises 
             const idFind = await ContryAll.find(country => country.id === idPais); 
             
-            // si no obtuve ninguna coincidencia mando un status 400 y un mensaje
+            // si no obtuve ninguna coincidencia
             if(!idFind) return res.status(400).send('ID de pais no se encontro');
             
-            // si si encuentra coincidencia, un 200 OK y el objeto que encontre.
+            // si  encuentra coincidencia
             return res.status(200).json(idFind);
         }
     } catch (error) {
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: 'Error del servidor' });
     }
 });
 

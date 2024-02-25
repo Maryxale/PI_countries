@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { getCountry, addActivity, getActivity, deleteActivities } from '../../redux/actions';
 import validate from "./validate";  //validacion en js
 import style from "./Form.module.css"
-import { NavLink } from "react-router-dom";
+
 
 const Form = () => {
     const dispatch = useDispatch();
     const countriesName = useSelector((state) => state.countries);
     const countriesorden = countriesName.sort((a, b) => a.name.localeCompare(b.name))
-    //selecciona el estado countries declarado en el initialState y lo ordeno alfabeticamente
+    //uso el estado countries declarado en el initialState
     const theActivities = useSelector((state) => state.activities);
     const activitiesorden = theActivities.sort((a, b) => a.name.localeCompare(b.name))
-    //selecciona el estado activities declarado en el initialState y lo ordeno alfabeticamente
+    //uso el estado activities declarado en el initialState 
+    //para poder ordenar
 
     const [input, setInput] = useState({
         name: '', 
@@ -91,21 +92,21 @@ const Form = () => {
         
     }
     
-    //useEffect
+    //useEffect:para obtener lista de paises y actividades del servidor
     useEffect(() => {
         dispatch(getCountry())
     }, [dispatch]);
-    // se utiliza para obtener la lista de países del servidor cuando el componente se monta por primera vez
+    
     
     useEffect(() => {
         dispatch(getActivity())
     }, [dispatch]);
-    // se utiliza para obtener la lista de actividades del servidor cuando el componente se monta por primera vez
-
+    
+ // con este elimino actividades almacenadas
     useEffect(() => {
         dispatch(deleteActivities())
     }, [dispatch]);
-    // se utiliza para eliminar las actividades almacenadas
+   
 
     
 
@@ -117,7 +118,7 @@ const Form = () => {
                 <form onSubmit={(e) => handleSubmit(e)}>
 
                     
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                             <div className={style.unidos}>
                                 <label className={style.label}>Name: </label>
                                 <input className={style.formInputt} onChange={handleChange} type="text" value={input.name} name='name' placeholder="Activity name"/>
@@ -128,7 +129,7 @@ const Form = () => {
                             
                         </div>
 
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                                 <label className={style.label}>Difficulty: </label>
                                 <select className={style.formInput} onChange={handleChange} name='difficulty'>
                                     <option value="" disabled selected>Select</option>
@@ -143,7 +144,7 @@ const Form = () => {
                            
                         </div>
 
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                             
                                 <label className={style.label}>Duration: </label>
                                 <select className={style.formInput} onChange={handleChange} name='duration'>
@@ -178,7 +179,7 @@ const Form = () => {
                            
                         </div>
 
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                             
                                 <label className={style.label}>Season: </label>
                                 <select className={style.formInput} onChange={handleChange} name='season'>
@@ -193,7 +194,7 @@ const Form = () => {
                            
                         </div>
 
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                             
                                 <label className={style.label}>Country: </label>
                                 <select className={style.formInput} onChange={handleSelectCountries}>
@@ -234,7 +235,7 @@ const Form = () => {
                 <p className={style.titulo}>Eliminar Actividad</p>
                 <form onSubmit={(event) => handleSubmitDelete(event)}>
                     
-                        <div className={style.formField}>
+                        <div className={style.formCampo}>
                             <div>
                                 <select className={style.formInputdel} onChange={handleSelectDelete}>
                                     <option value="" disabled selected>Activity</option>

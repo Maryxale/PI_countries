@@ -1,11 +1,11 @@
 const express = require("express");
-const morgan = require("morgan");
+const morgan = require("morgan"); 
 const router = require("./routes/index");
 const cors = require("cors");
 
 const server = express();
 
-//middlewares
+//middlewares (soportar acciones asincronas)
 server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -22,9 +22,9 @@ server.use((req, res, next) => {
 
 const corsOptions = {origin: '*',}
 
-server.use(morgan("dev"));
-server.use(express.json());
-server.use(cors(corsOptions));
+server.use(morgan("dev")); //para proporcionar info mas detallada sobre cada peticion
+server.use(express.json()); //para que el back entienda lo que le pasa el front
+server.use(cors(corsOptions)); //cruzar peticiones entre navegador y servidor
 
 
 server.use('/',router);

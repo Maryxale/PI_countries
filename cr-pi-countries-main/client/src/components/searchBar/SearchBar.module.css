@@ -1,5 +1,5 @@
 .nav{
-    /*border: 0.4vh solid #6096ba;*/
+    
     border-radius: 20px;
     margin-bottom: 1vh;
     margin-right: 2%;
@@ -74,32 +74,18 @@
     background-color: rgb(53, 52, 52);
     cursor:default;
 }
+/*para nueva actividad y salir*/
 
-
- a:link, a:visited, a:active {
+  a:link, a:visited, a:active {
     text-decoration:none;
     color: #274c77;
     transition: 0.5s;
 } 
 
 
-/* .countries{
-    font-family:cursive;
-    border-color: rgba(240, 248, 255, 0);
-    background-color: rgba(63, 62, 62, 0);
-    transition: 0.3s;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    font-weight: bold;
-    font-size: 2.7vh;
-    color: black;
-    cursor: pointer;
-} */
-
-
 .alink:hover{
     filter:invert(100%)
-}
+} 
 
 .botonBuscar{
     width: 10vw;

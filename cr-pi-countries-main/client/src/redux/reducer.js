@@ -1,12 +1,10 @@
-import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, LOADING, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
+import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
 //estado inicial
 const initialState = {
     error: "",
     countriesAll: [],
     countries: [],
-    //activity: [],
     details: {},
-    loading: false,
     activities: [],
     
 
@@ -25,20 +23,20 @@ function reducer(state = initialState, {type, payload} ){
             return {...state};
             
         case GET_ACTIVITY:
-            //return {...state, activity: payload};
+            
             return {...state, activities: payload};
         case DELETE_ACTIVITIES:
                 return { ...state};
                 
         case SEARCH_NAME:
-            //!ver si puedo quitar todos los paises
+            
             //metodo some() para comprobar si algun elemento cumple con lo que se requiere
             let AllCountries = payload
             let filterCountries = state.countries
             if(state.countries !== state.countriesAll){
                 AllCountries = filterCountries.filter((country) => payload.some((count) => count.id === country.id ))
             }
-            return {...state, countries: AllCountries, error: "", loading: false };
+            return {...state, countries: AllCountries, error: ""};
 
             //filtrado de continente y actividades
         
@@ -49,7 +47,7 @@ function reducer(state = initialState, {type, payload} ){
             if(payload.continent !== 'All'){
                 CountriesFilter = CountriesFilter.filter(element => element.continent === payload.continent)
             }
-
+            //filtro por actividad
             if(payload.activity !== 'All'){
                 CountriesFilter = CountriesFilter.filter(country => country.Activities.find(activity => activity.name === payload.activity))
             }
@@ -64,11 +62,7 @@ function reducer(state = initialState, {type, payload} ){
             if(payload === "PoblacionDescendente")  return {...state,countries: orderCountry.sort((a, b) => parseInt(b.population, 10) - parseInt(a.population, 10))}
             break;
        
-        case LOADING:
-            return{
-                ...state,
-                loading: true
-            }
+        
         default: return {...state};
     }
 

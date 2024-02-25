@@ -7,7 +7,7 @@ const LandingPage = () => {
         <div className={style.landing}>
             <div className={style.dark}>
                 <div className={style.text}>
-                    <div className={style.textBig}> 
+                    <div className={style.textGrande}> 
                         <h1>Bienvenidos a la app Countries</h1>
                     </div>
                     <br />

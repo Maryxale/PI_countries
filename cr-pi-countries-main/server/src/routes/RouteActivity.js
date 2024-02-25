@@ -1,4 +1,4 @@
-// Revisar y/o agregar comentarios
+//rutas activity
 const { Router } = require('express');
 const postActivities = require('../controllers/postActivities')
 const deleteActivity = require('../controllers/deleteActivity')
@@ -8,12 +8,12 @@ const router = Router();
 
 //POST | /activities
 router.post('/', async (req, res) => {
-    //traigo de body todos los atributos de mi modelo Activity y el ID del Pais para establecer la relacion 
+    //traigo los atributos de mo modelo
     const {name, difficulty, duration, season, countryId} = req.body;
     try {
-        //ejecuto mi controller pasandole los datos, este controler devuelve un objeto con la nueva actividad, relacionada con el pais correspondiente.
+        //ejecuto mi controller para pasarle los datos de la actividad
         const AddAtivity = await postActivities(name, difficulty, duration, season, countryId);
-        return res.status(200).json(AddAtivity); //devuelvo esa respuesta. 
+        return res.status(200).json(AddAtivity); 
     } catch (error) {
         return res.status(400).send(error);
     }
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 //GET | /activities
 router.get('/', async (req, res) => {
     try {
-        //traigo todas las actividades de la DB.
+        //traigo actividades de mi base se datos
         const Data = await Activity.findAll(); 
         res.status(200).json(Data);
     } catch (error) {
@@ -30,15 +30,16 @@ router.get('/', async (req, res) => {
     }
 })
 
-//se elimina por un nombre que llegue por query (delete)
+//hice una para eliminar la actividad
+
 router.delete('/', async (req, res) => {
     const { name } = req.query;
     try {
-      const Deleted = await deleteActivity(name); //cambie el nombre de variable
+      const Deleted = await deleteActivity(name); 
       if (Deleted) {
         return res.status(200).json({ message: 'Actividad eliminada' });
       } else {
-        return res.status(404).json({ message: 'Actividad no encontrada' });
+        return res.status(404).json({ message: 'No esta esa actividad' });
       }
     } catch (error) {
       return res.status(500).json({ message: 'Error al eliminar la actividad' });

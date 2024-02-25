@@ -1,3 +1,4 @@
+//tipo de acciones que usare
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const GET_COUNTRY= 'GET_COUNTRY';
 export const COUNTRY_DETAIL = 'COUNTRY_DETAIL'
