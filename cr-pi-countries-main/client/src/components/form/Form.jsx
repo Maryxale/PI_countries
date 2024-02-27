@@ -103,11 +103,6 @@ const Form = () => {
         dispatch(getActivity())
     }, [dispatch]);
     
- // con este elimino actividades 
-    useEffect(() => {
-        dispatch(deleteActivities())
-    }, [dispatch]);
-   
 
     
     //para crear una actividad

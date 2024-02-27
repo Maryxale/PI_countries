@@ -46,7 +46,7 @@
     justify-content: center;
     align-items: center;
     width: 45vw;
-    height: 38.9vh;
+    height: 38.9vh; 
     background-color:rgba(246, 243, 243, 0.555);
     border-radius: 15px;
     margin-bottom: 1vh;
@@ -56,9 +56,12 @@
     margin-right: 0.5vw;
     box-shadow: 0 0 5px 5px rgb(39, 39, 39);
     margin-top: 8px;
+    
 
 
   }
+
+ 
 
   .actcontainer{
     display: flex;
@@ -68,7 +71,7 @@
     height:17vh;
     background-color: rgba(0, 0, 0, 0.452);
     padding: 0.4vh;
-    border-radius: 15px;
+    border-radius: 30px;
     align-items: center;
     color:#274c77;
     box-shadow: 0 0 5px 5px rgb(39, 39, 39);

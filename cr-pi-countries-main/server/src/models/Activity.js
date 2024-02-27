@@ -6,14 +6,14 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true 
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         difficulty: {
-            type: DataTypes.ENUM('1', '2', '3', '4', '5'), //enum selector multiple y guarda como un array con los valores que tendran disponibles
+            type: DataTypes.ENUM('1', '2', '3', '4', '5'), //array con los valores que tendran disponibles
             allowNull: false,
         },
         duration: {

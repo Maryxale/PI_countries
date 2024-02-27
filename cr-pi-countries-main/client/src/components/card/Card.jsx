@@ -7,7 +7,7 @@ import style from './Card.module.css';
 //renderizo
 
 
-function Card ({id, name, flags, continent}){
+function Card ({id, name, flags, continent }){
     return (
         <NavLink to={`/detail/${id}`}>
           <div className={style.Card}>
@@ -18,6 +18,7 @@ function Card ({id, name, flags, continent}){
               <div className={style.Titulos}>
                 <h4 className={style.titulo}>{name}</h4>
                 <h6 className={style.subtitulo}>Continent: {continent}</h6>
+                
               </div>
             </div>
           </div>

@@ -55,7 +55,7 @@ export const deleteActivities = (payload) => {
             const { data } = await axios.delete(endpoint);
             return dispatch({ type: DELETE_ACTIVITIES, payload: data })
         } catch (error) {
-            console.error(`Error al borrar la actividad${payload}`, error);
+            alert(`Error al borrar la actividad${payload}`, error);
         }
     }
  }

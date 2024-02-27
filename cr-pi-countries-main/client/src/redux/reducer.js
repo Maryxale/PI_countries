@@ -1,7 +1,6 @@
 import {  GET_ACTIVITY, GET_COUNTRY, COUNTRY_DETAIL, ADD_ACTIVITY, SEARCH_NAME, ORDER_BY, FILTER_CONTINENT_ACTIVITY, DELETE_ACTIVITIES } from "./actionsTypes";
 //estado inicial
 const initialState = {
-    error: "",
     countriesAll: [],
     countries: [],
     details: {},
@@ -17,7 +16,7 @@ function reducer(state = initialState, {type, payload} ){
             return {...state, countries: payload, countriesAll: payload};
 
         case COUNTRY_DETAIL:
-            return {...state, details: payload, loading: false };
+            return {...state, details: payload };
 
         case ADD_ACTIVITY:
             return {...state};
@@ -36,7 +35,7 @@ function reducer(state = initialState, {type, payload} ){
             if(state.countries !== state.countriesAll){
                 AllCountries = filterCountries.filter((country) => payload.some((count) => count.id === country.id ))
             }
-            return {...state, countries: AllCountries, error: ""};
+            return {...state, countries: AllCountries};
 
             //filtrado de continente y actividades
         

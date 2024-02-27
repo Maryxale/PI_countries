@@ -40,7 +40,7 @@
     display: flex;
     justify-content: left;
     position: relative;
-    top: 4vh;
+    top: 2vh;
   }
   
   .imgCard {
@@ -55,14 +55,13 @@
   }
   
   .titulo {
-    margin-top: 0.8vh;
-    margin-bottom: 0.3vh;
     font-size: 2.5vh;
+    margin: 0px;
   }
   
   .subtitulo {
-    margin-top: 0.3vh; 
     font-size: 2vh;
+    margin: 0px;
   }
 
   .mensaje{

@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             return res.status(200).json(InfoDB); //si no me pasan por name, paso todos los paises
         }
         else {
-            //si llega por name, con el filter e includes me aseguro que devuelva el pais independientemente de como lo escriban
+            
             const CountryFilter = InfoDB.filter(element => element.name.toLowerCase().includes(name.toLowerCase()));
             
             //si esta vacio se pasa un mensaje desde le front, sino este 200 con la info de pais
