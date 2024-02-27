@@ -193,11 +193,11 @@
     margin-top: 22vh;
     margin-bottom: 0px;
     font-family:cursive;
-    border-radius: 10px;
-    background-color: rgb(53, 52, 52);
+    border-radius: 20px;
+    background-color: white;
     cursor: pointer;
     border-color: #ffffff;
-    color: white;
+    color: #274c77;
      box-shadow: 0 0 5px 5px rgb(39, 39, 39);
      -webkit-transition: all 150ms ease-in-out;
     transition: 0.5s;
@@ -206,7 +206,7 @@
 }
 
 .navv:hover{
-    background-color: black;
+    background-color: #274c77;
     color: white;
 } 
 

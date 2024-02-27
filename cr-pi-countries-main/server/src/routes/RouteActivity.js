@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
         const AddAtivity = await postActivities(name, difficulty, duration, season, countryId);
         return res.status(200).json(AddAtivity); 
     } catch (error) {
-        return res.status(400).send(error);
+        return res.status(400).json({message:error.message});
     }
 });
 
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
         const Data = await Activity.findAll(); 
         res.status(200).json(Data);
     } catch (error) {
-        return res.status(400).send(error);
+        return res.status(400).json({message:error.message});
     }
 })
 

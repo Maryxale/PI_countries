@@ -15,7 +15,7 @@ const deleteActivity = async(name) => {
 
         return true;
     }catch(error){
-        console.error('error para eliminar la actividad', error)
+        alert('error para eliminar la actividad', error)
     }
 }
 

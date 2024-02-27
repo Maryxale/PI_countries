@@ -3,13 +3,14 @@ import style from './Pagination.module.css';
 
 const Pagination = ({pageCurrent, pageFinal, onChangePage}) => {
     //con estos handler ordeno las paginas e indico cual es la que sigue
-    const handlePage = () => {
+    //onChangePage: Es una función que se llama cuando se cambia la página. Toma el nuevo número de página como argumento.
+    const handlePage = () => { // Disminuye el número de página actual en 1 si la página actual es mayor que 1
         if(pageCurrent > 1){
             onChangePage(pageCurrent - 1);
         }
     }
 
-    const handleProxiPage = () => {
+    const handleProxiPage = () => { // Aumenta el número de página actual en 1 si la página actual es menor que la página final
         if(pageCurrent < pageFinal){
             onChangePage(pageCurrent + 1);
         }

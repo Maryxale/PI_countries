@@ -14,7 +14,7 @@ const getInfo = async () => {
             }
         }) 
     } catch (error) {
-        console.log('Error al obtener todos los Paises de la DB incluyendo sus Actividades', error);
+        alert('Error al obtener todos los Paises de la DB incluyendo sus Actividades', error);
     }
 };
 

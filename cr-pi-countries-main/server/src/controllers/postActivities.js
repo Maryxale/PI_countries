@@ -15,7 +15,7 @@ const postActivities = async (name, difficulty, duration, season, countryId) => 
         await actividad.setCountries(countryId);
         return actividad; 
     } catch (error) {
-        console.log('Error cuando se crea la actividad', error);
+        alert('Error cuando se crea la actividad', error);
     }
 };
 

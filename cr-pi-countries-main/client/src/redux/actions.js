@@ -11,7 +11,7 @@ export const getCountry = () => {
                 payload: data,
             });
         }catch(error){
-            alert(error.messaje);
+            alert(error.message);
         }
     }
 }
@@ -55,10 +55,10 @@ export const deleteActivities = (payload) => {
             const { data } = await axios.delete(endpoint);
             return dispatch({ type: DELETE_ACTIVITIES, payload: data })
         } catch (error) {
-            console.log('Error al borrar la actividad', error);
+            console.error(`Error al borrar la actividad${payload}`, error);
         }
     }
-}
+ }
 
 export const searchName = (payload) => {
     const endpoint = `http://localhost:3001/countries?name=${payload}`;
@@ -70,8 +70,8 @@ export const searchName = (payload) => {
                 payload: data
             })
         }catch(error){
-            alert('Pais no encontrado');
-            console.log(error)
+            alert('Pais no encontrado',error);
+            
         }
     } 
 }

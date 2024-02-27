@@ -5,14 +5,17 @@ import { getCountry, addActivity, getActivity, deleteActivities } from '../../re
 import validate from "./validate";  //validacion en js
 import style from "./Form.module.css"
 
+const reiniciar = () => {
+    location.reload(false)  
+}
 
 const Form = () => {
     const dispatch = useDispatch();
-    const countriesName = useSelector((state) => state.countries);
-    const countriesorden = countriesName.sort((a, b) => a.name.localeCompare(b.name))
+    const nameCountry = useSelector((state) => state.countries);
+    const orderCountry = nameCountry.sort((a, b) => a.name.localeCompare(b.name))
     //uso el estado countries declarado en el initialState
     const theActivities = useSelector((state) => state.activities);
-    const activitiesorden = theActivities.sort((a, b) => a.name.localeCompare(b.name))
+    const orderActivities = theActivities.sort((a, b) => a.name.localeCompare(b.name))
     //uso el estado activities declarado en el initialState 
     //para poder ordenar
 
@@ -24,7 +27,7 @@ const Form = () => {
         countryId: []
     });
     
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({}); //validate
     
     const handleChange = (event) => {
         setInput({
@@ -36,10 +39,11 @@ const Form = () => {
             [event.target.name]: event.target.value
         }))
     }
-    //se ejecuta cuando se produce un cambio en el input o select, indica que se guarde dentro del estado input, en la propiedad con el mismo nombre que tiene event.target.name ( por ej: 'name'), el valor proporcionado en el input o select y llama a la función setErrors para realizar validaciones en el nuevo estado input.
+    //cuando se produce un cambio indica que se guarde dentro del estado correspondiente
+    //luego se realizan las validaciones en el nuevo estado
     
     
-    const handleSelectCountries = (event) => {
+    const handleCountry = (event) => {
         setInput({
             ...input,
             countryId: [...input.countryId, event.target.value]
@@ -50,45 +54,42 @@ const Form = () => {
         }))
     }
 
-    //se ejecuta cuando se selecciona el pais o los paises donde se realiza la nueva actividad. Concatena el valor proporcionado en el select con los valores previos en la propiedad countryId, llama a la función setErrors para realizar validaciones en el nuevo estado input.   
+    //para cuando se seleccione algun pais donde se realiza una actividad
+    //luego se realizan las validaciones en el nuevo estado
     
 
     const handleSubmit = (event) => {
-        
-        event.preventDefault(); //se evita que la página se recargue al enviar el formulario.
-        const errorSave = validate(input); // se asigna el resultado de la funcion validate, pasandole input como parametro.
-        const existName = theActivities.find(activity => activity.name.toLowerCase() === input.name.toLowerCase()) ? 1 : 0; //si hay alguna actividad con el mismo nombre que el valor ingresado en el campo input.name, existName se establece en 1, de lo contrario, se establece en 0.
-        if (existName === 1) alert("El nombre de la actividad ya existe");// si hay una actividad con el mismo nombre 
-        else if (Object.values(errorSave).length !== 0) alert("You must fullfill all the required conditions");// ¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
+         event.preventDefault(); 
+        const nameSalida = theActivities.find(activity => activity.name.toLowerCase() === input.name.toLowerCase()) ? 1 : 0; //por si hay alguna coincidencia en el nombre de alguna actividad
+        if (nameSalida === 1) alert("El nombre de la actividad ya existe");
         else {
-            dispatch(addActivity(input)) //se despacha la action pasandole como argumento "input", que es un objeto con todo lo necesario para crear una nueva actividad. 
-            alert('Actividad Creada!')//se muestra una alerta al usuario indicando que se ha creado la actividad con exito.
+            dispatch(addActivity(input)) 
+            alert('Actividad Creada!')//se notifica al usuario que se creo la actividad
             setInput({
                 name: '', 
                 difficulty: '', 
                 duration: '', 
                 season: '',
                 countryId: []
-            }) // borrar los datos ingresados en el formulario.
-            //reload(); //recargar la lista de actividades después de crear una nueva actividad.
+            }) 
+            reiniciar(); 
         }
     }
 
     //Delete Activity
-    const [delAct, setDelAct] = useState('');
+    const [actDelete, setactDelete] = useState('');
 
-    const handleSelectDelete = (event) => {
-        setDelAct(event.target.value)
+    const handleDelete = (event) => {
+        setactDelete(event.target.value)
     }
-    //se ejecuta cuando se selecciona una actividad para eliminar en el campo de selección correspondiente. Actualiza el estado delAct con el nombre de la actividad seleccionada.
+    //para eliminar la actividad
 
     const handleSubmitDelete = (event) => {
-        
-        event.preventDefault();
-        dispatch(deleteActivities(delAct));
+         event.preventDefault();
+        dispatch(deleteActivities(actDelete));
             alert('Actividad eliminada')
-            setDelAct('');
-            
+            setactDelete('');
+            reiniciar(); //para que se actualice de una vez en el delete la actividad 
         
     }
     
@@ -102,17 +103,17 @@ const Form = () => {
         dispatch(getActivity())
     }, [dispatch]);
     
- // con este elimino actividades almacenadas
+ // con este elimino actividades 
     useEffect(() => {
         dispatch(deleteActivities())
     }, [dispatch]);
    
 
     
-
+    //para crear una actividad
     return (
         <div className={style.contenedor}>
-            {/*Create activity sector*/}
+           
             <div className={style.formContainer}>
                 <p className={style.titulo}>Nueva Actividad</p>
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -121,7 +122,7 @@ const Form = () => {
                         <div className={style.formCampo}>
                             <div className={style.unidos}>
                                 <label className={style.label}>Name: </label>
-                                <input className={style.formInputt} onChange={handleChange} type="text" value={input.name} name='name' placeholder="Activity name"/>
+                                <input className={style.formInputt} onChange={handleChange} type="text" value={input.name} name='name' placeholder="Nombre de Actividad"/>
                             </div>
                             
                             
@@ -132,7 +133,7 @@ const Form = () => {
                         <div className={style.formCampo}>
                                 <label className={style.label}>Difficulty: </label>
                                 <select className={style.formInput} onChange={handleChange} name='difficulty'>
-                                    <option value="" disabled selected>Select</option>
+                                    <option value="" disabled selected>Selecciona</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -148,7 +149,7 @@ const Form = () => {
                             
                                 <label className={style.label}>Duration: </label>
                                 <select className={style.formInput} onChange={handleChange} name='duration'>
-                                    <option value="" disabled selected>Select</option>
+                                    <option value="" disabled selected>Selecciona</option>
                                     <option value="1">1 hs</option>
                                     <option value="2">2 hs</option>
                                     <option value="3">3 hs</option>
@@ -183,7 +184,7 @@ const Form = () => {
                             
                                 <label className={style.label}>Season: </label>
                                 <select className={style.formInput} onChange={handleChange} name='season'>
-                                    <option value="" disabled selected>Select</option>
+                                    <option value="" disabled selected>Selecciona</option>
                                     <option value="Summer">Summer</option>
                                     <option value="Autumn">Autumn</option>
                                     <option value="Winter">Winter</option>
@@ -197,19 +198,18 @@ const Form = () => {
                         <div className={style.formCampo}>
                             
                                 <label className={style.label}>Country: </label>
-                                <select className={style.formInput} onChange={handleSelectCountries}>
-                                    <option value="" disabled selected>Select country</option>  
-                                    {/* Esta opción deshabilitada y seleccionada por defecto sirve como un texto de instrucción para que el usuario seleccione al menos un país. No se puede seleccionar y no tiene ningún valor asociado. */}
-                                    {countriesorden.map((country) => (
+                                <select className={style.formInput} onChange={handleCountry}>
+                                    <option value="" disabled selected>Selecciona Pais</option>  
+                                    {orderCountry.map((country) => (
                                         <option value={country.id}>{country.name}</option>
-                                        // se generan opciones para el menú desplegable. Cada objeto country genera una opción con su id como valor y su name como texto visible para el usuario. 
+                                        // se generan opciones para el menú
                                     ))}
                                 </select>
-                           
+                                
                                 {errors.countryId && <p className={style.formError}>{errors.countryId}</p>}
                         <div >
                             <ul className={style.elegidos}>
-                                <p>{input.countryId.map(countrieId_input => countriesName.map(countrie_state => {
+                                <p>{input.countryId.map(countrieId_input => nameCountry.map(countrie_state => {
                                 if (countrie_state.id === countrieId_input) { 
                                     return countrie_state.name + ', ';
                                 }
@@ -217,7 +217,7 @@ const Form = () => {
                                 </p>
                             </ul>
                         </div>
-                            {/* Se mapea la propiedad countryId del objeto input, donde se guardaron los id de los paises seleccionados anteriormente. Luego se vuelve a hacer otro mapeo, esta vez de la constante countriesName, que contiene el valor del estado countries que es un array con todos los paises. En este segundo mapeo se compara si el Id de alguno de los paises dentro del estado countries coincide con el id de los paises seleccionados, que se renderice en una etiqueta <p> el nombre de ese pais + , */}
+                            {/* Se mapea las propiedades donde se guardaron los id y los nombres de paises*/}
                         </div>
 
                    
@@ -229,7 +229,7 @@ const Form = () => {
                 </form>
             </div>
 
-            {/*Delete activity sector */}
+            {/*Delete*/}
             <div className={style.formContainerdel}>
                 <div >
                 <p className={style.titulo}>Eliminar Actividad</p>
@@ -237,25 +237,26 @@ const Form = () => {
                     
                         <div className={style.formCampo}>
                             <div>
-                                <select className={style.formInputdel} onChange={handleSelectDelete}>
-                                    <option value="" disabled selected>Activity</option>
-                                    {activitiesorden && activitiesorden.map((activity) => {
+                                <select className={style.formInputdel} onChange={handleDelete}>
+                                    <option value="" disabled selected>Actividad</option>
+                                    {orderActivities && orderActivities.map((activity) => {
                                         return (
                                             <option value={activity.name}>{activity.name}</option>
                                         )
                                     })}
-                                    {/* si la constante theActivities que tiene asignado el valor del estado activities, que es listado de actividades, existe osea si hay actividades dentro del estado, se hace un mapeo de esta constante en el que por cada actividad de renderiza una opcion con el valor del nombre de la actividad y que renderice tambien su nombre. De esta forma le asignamos el valor del nombre de la actividad al estado delAct, que luego se le pasa como argumento a la action deleteActivities, y de esta forma se elimina dicha actividad. */}
+                                    
                                 </select>
                             </div>
                         </div>
 
-                    <p className={style.elegidos} >Actividad a eliminar: {delAct}</p>
+                    <p className={style.elegidos} >Actividad a eliminar: {actDelete}</p>
 
                     <div>
-                        <button className={style.nav} type="submit" disabled={delAct===''}>Borrar</button>
+                        <button className={style.nav} type="submit" disabled={actDelete===''}>Borrar</button>
                         
                     </div>
                 </form>
+                
                 </div>
                 
             </div>

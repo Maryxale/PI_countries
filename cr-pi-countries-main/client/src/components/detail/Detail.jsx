@@ -25,7 +25,7 @@ function Detail(){
           </div>
     
             <div>
-              <div className={styles.containerDetalle}>
+              <div className={styles.containerDetalle}> {/*accedo a las propiedades del objeto si no esta nulo o indefinido*/}
               <h1 className={styles.titulos}>Datos del Pais</h1>
               <h3 className={styles.text}>Continent: {countries?.continent} </h3>
               <h3 className={styles.text}>Capital: {countries?.capital}</h3>

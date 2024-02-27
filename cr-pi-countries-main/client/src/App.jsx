@@ -11,7 +11,7 @@ function App() {
   const location = useLocation();
 
 //enrutamiento
-//renderizar nav solo si no esta en '/' o '/home'
+//renderizar condicionalmente nav
   return (
   <div className="App">
       <div className='dark'>

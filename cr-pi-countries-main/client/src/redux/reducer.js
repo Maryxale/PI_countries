@@ -26,7 +26,7 @@ function reducer(state = initialState, {type, payload} ){
             
             return {...state, activities: payload};
         case DELETE_ACTIVITIES:
-                return { ...state};
+            return { ...state};
                 
         case SEARCH_NAME:
             

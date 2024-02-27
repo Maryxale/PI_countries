@@ -22,7 +22,7 @@ const InfoApi = async () => {
             
         return countries; 
     } catch (error) {
-        console.log('No se obtuvo datos de la Api', error);
+        alert('No se obtuvo datos de la Api', error);
     }
 };
 
@@ -36,7 +36,7 @@ const fromApi_DB = async () => {
             await Country.bulkCreate(allCountries);
         }//Ejecuto el metodo bulkCreate y asi cargar en mi base de datos todos los paises
     } catch (error) {
-        console.log('Error al subir los datos de la api a la base de datos',error);
+        alert('Error al subir los datos de la api a la base de datos',error);
     }
 };
 

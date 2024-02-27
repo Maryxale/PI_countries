@@ -26,8 +26,8 @@ router.get('/', async (req, res) => {
             return res.status(200).json(CountryFilter)
         }
     } catch (error) {
-        console.log(error)
-        return res.status(500).json({ error: 'Error de servidor' }); 
+        
+        return res.status(500).json({message:error.message}); 
     }
 });
 
@@ -49,7 +49,7 @@ router.get('/:idPais', async (req, res) => {
             return res.status(200).json(idFind);
         }
     } catch (error) {
-        return res.status(500).json({ error: 'Error del servidor' });
+        return res.status(500).json({message:error.message});
     }
 });
 
