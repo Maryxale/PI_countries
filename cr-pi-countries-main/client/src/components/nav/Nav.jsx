@@ -6,7 +6,7 @@ const Nav = () => {
     return (
     <div className={style.nav}>
         
-        <NavLink className={style.mundo} to="/home"><img src={planetaTierra} alt="" height='35px' /></NavLink>
+        <NavLink className={style.mundo} to="/home"><img src={planetaTierra} alt="a home" height='35px' /></NavLink>
         
         <NavLink className={style.select} to="/form">Nueva Actividad</NavLink>
         <NavLink className={style.selects} to="/">Salir</NavLink>    

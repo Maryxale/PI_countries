@@ -48,14 +48,13 @@ const handleContinent = (evento) => {
 }
 
 const handleActivity = (evento) => {
-  evento.preventDefault();
+  evento.preventDefault(); //controlar el evento
   setfilterActivity(evento.target.value)
 }
 
 //ORDENAR
 const handleFilter = () => {
- 
-  setpageCurrent(1);
+ setpageCurrent(1);
   let filters = {
     continent: filterContinent,
     activity: filterActivity,

@@ -40,7 +40,7 @@ const Form = () => {
         }))
     }
     //cuando se produce un cambio indica que se guarde dentro del estado correspondiente
-    //luego se realizan las validaciones en el nuevo estado
+    
     
     
     const handleCountry = (event) => {
@@ -55,7 +55,7 @@ const Form = () => {
     }
 
     //para cuando se seleccione algun pais donde se realiza una actividad
-    //luego se realizan las validaciones en el nuevo estado
+    
     
 
     const handleSubmit = (event) => {
@@ -93,7 +93,7 @@ const Form = () => {
         
     }
     
-    //useEffect:para obtener lista de paises y actividades del servidor
+    //useEffect:para obtener lista de paises y actividades
     useEffect(() => {
         dispatch(getCountry())
     }, [dispatch]);

@@ -60,7 +60,7 @@ export const deleteActivities = (payload) => {
     }
  }
 
-export const searchName = (payload) => {
+ export const searchName = (payload) => {
     const endpoint = `http://localhost:3001/countries?name=${payload}`;
     return async (dispatch) => {
         try{
@@ -74,7 +74,7 @@ export const searchName = (payload) => {
             
         }
     } 
-}
+ }
 
 //filtrar por continente o activity
 
