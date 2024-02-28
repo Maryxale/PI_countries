@@ -40,7 +40,7 @@ function reducer(state = initialState, {type, payload} ){
             //filtrado de continente y actividades
         
         case FILTER_CONTINENT_ACTIVITY:
-            //primero traigo todos los paises
+            //copia del array
             let CountriesFilter = [...state.countriesAll];
                 //filtro por continente
             if(payload.continent !== 'All'){
@@ -50,6 +50,7 @@ function reducer(state = initialState, {type, payload} ){
             if(payload.activity !== 'All'){
                 CountriesFilter = CountriesFilter.filter(country => country.Activities.find(activity => activity.name === payload.activity))
             }
+            
             return{...state, countries: CountriesFilter};
             //Ordenamientos
         case ORDER_BY:

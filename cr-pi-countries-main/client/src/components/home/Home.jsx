@@ -52,12 +52,15 @@ const handleActivity = (evento) => {
   setfilterActivity(evento.target.value)
 }
 
+
+
 //ORDENAR
 const handleFilter = () => {
  setpageCurrent(1);
   let filters = {
     continent: filterContinent,
     activity: filterActivity,
+
   };
   dispatch(filterContinentActivity(filters));
   setOrder(""); 
@@ -112,6 +115,7 @@ const handleOrderBy = (evento) => {
               )
             })}
           </select>
+          
         </div>
         <button className={style.botones} type="submit" onClick={handleFilter}>Aplicar</button>
       </div>

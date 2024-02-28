@@ -1,5 +1,5 @@
 function validate (input) {
-    let errors = {};  //expresion regular
+    let errors = {};  
     if (!input.name || !/^[a-zA-Z\s]*$/.test(input.name) || input.name.length < 3 || input.name.length >= 25) errors.name = 'Debe contener de 3 a 25 caracteres, sólo letras'; //Verifica si name existe, si tiene solo letras y espacios, si su longitud está entre 3 y 25 caracteres.
     if (!input.difficulty) errors.difficulty = 'Se requiere dificultad';
     if (!input.duration) errors.duration = 'Duración requerida';
